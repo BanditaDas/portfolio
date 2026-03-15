@@ -13,20 +13,20 @@ const projects = [
     link: 'https://banditadas.github.io/Obys-Agency/'
   },
   { 
-    title: 'Two Good Co', 
+    title: 'Exo-Ape', 
     category: 'UI Clone', 
     year: '2023',
     image: 'https://picsum.photos/seed/twogood/600/400',
     description: 'A UI clone of an Australian food and product selling company called TWO GOOD CO.',
-    link: 'https://banditadas.github.io/Two-Good-CO/'
+    link: 'https://exo-ape-j778.vercel.app/'
   },
   { 
-    title: 'Flipkart', 
+    title: 'Work', 
     category: 'UI Clone', 
     year: '2023',
     image: 'https://picsum.photos/seed/flipkart/600/400',
-    description: 'A UI clone of FLIPKART, a shopping website.',
-    link: 'https://banditadas.github.io/Flipkart-clone/'
+    description: 'A UI clone of Refokus work page bulid with React JS and for animation I used Framar Motion.',
+    link: 'https://work-ruby-three.vercel.app/'
   }
 ];
 
@@ -50,7 +50,7 @@ export const Work: React.FC = () => {
     <section id="work" className="py-12 md:py-20 px-4 md:px-8 relative" onMouseMove={handleMouseMove}>
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16">
-          <h2 className="text-4xl md:text-5xl font-medium flex overflow-hidden">
+          <h2 className="text-5xl md:text-6xl font-medium flex overflow-hidden">
             {"Recent Work".split('').map((char, index) => (
               <motion.span
                 key={index}
@@ -79,7 +79,7 @@ export const Work: React.FC = () => {
             >
               <div className="flex items-center gap-8 z-10 w-full md:w-auto">
                 <h3 
-                  className="text-3xl md:text-5xl lg:text-6xl font-medium transition-all duration-500 group-hover:opacity-40 md:group-hover:translate-x-4"
+                  className="text-4xl md:text-3xl lg:text-4xl font-medium transition-all duration-500 group-hover:opacity-40 md:group-hover:translate-x-4"
                   onMouseEnter={() => setIsHoveringContent(true)}
                   onMouseLeave={() => setIsHoveringContent(false)}
                 >

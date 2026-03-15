@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Globe } from 'lucide-react';
+import { Globe, Download } from 'lucide-react';
 import { AvatarVideo } from './AvatarVideo';
+import { Magnetic } from './Magnetic';
 
 const ScrambleText = () => {
   const phrases = ['Frontend Developer', 'UI & UX Developer'];
@@ -67,13 +68,13 @@ export const Hero: React.FC = () => {
             ease: "linear"
           }}
         >
-          <h1 className="text-[12vw] font-semibold leading-[0.8] tracking-tighter uppercase pr-8 flex items-center">
+          <h1 className="text-[10vw] font-semibold leading-[0.8] tracking-tighter uppercase pr-8 flex items-center pt-16">
             <span>Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
             <span className="italic font-serif">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
             <span>Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
-            <span className="italic font-serif">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+            <span className="italic  font-serif">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
           </h1>
-          <h1 className="text-[12vw] font-semibold leading-[0.8] tracking-tighter uppercase pr-8 flex items-center">
+          <h1 className="text-[10vw] font-semibold leading-[0.8] tracking-tighter uppercase pr-8 flex items-center">
             <span>Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
             <span className="italic font-serif">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
             <span>Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
@@ -96,6 +97,19 @@ export const Hero: React.FC = () => {
           <span className="text-sm opacity-50 uppercase tracking-widest">Scroll</span>
           <div className="w-[1px] h-12 bg-black/20 dark:bg-white/20 transition-colors duration-500" />
         </motion.div>
+      </div>
+
+      <div className="absolute bottom-12 right-4 md:right-8 z-20">
+        <Magnetic strength={0.2}>
+          <a 
+            href="/Bandita_Das_new.pdf"
+            download
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn"
+          >
+            <span className="text-sm font-medium">Resume</span>
+            <Download className="w-4 h-4 transition-transform group-hover/btn:translate-y-1" />
+          </a>
+        </Magnetic>
       </div>
     </section>
   );

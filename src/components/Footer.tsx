@@ -76,9 +76,8 @@ export const Footer: React.FC = () => {
               © {new Date().getFullYear()} Bandita. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">Twitter</a>
-              <a href="#" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">LinkedIn</a>
-              <a href="#" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">GitHub</a>
+              <a href="https://www.linkedin.com/in/bandita-das-74bb58292/" target='blank' className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">LinkedIn</a>
+              <a href="https://github.com/BanditaDas" target='blank' className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">GitHub</a>
             </div>
           </div>
         </div>

@@ -39,25 +39,25 @@ export const About: React.FC = () => {
   const bentoItems = [
     {
       id: 'intro',
-      className: 'md:col-span-2 md:row-span-1 bg-[#1c1d20] border border-white/10 p-6 rounded-3xl flex flex-col justify-between',
+      className: 'md:col-span-2 md:row-span-1 bg-[#1c1d20] border border-white/10 p-6 rounded-3xl flex flex-col justify-between md:h-56',
       content: (
         <div>
-          <h3 className="text-2xl font-light mb-3">Hi, I'm Bandita Das —</h3>
+          <h3 className="text-2xl font-light mb-3">Hi, I'm Bandita —</h3>
           <p className="text-sm opacity-60 leading-relaxed">
-            I am a Front end Developer, pursuing Bachelor of Computer Applications (BCA), with 9.3 YGPA. Skilled in making Awarded website UI clones. Currently learning OOPs Concept in Python.
+            I’m a frontend developer passionate about crafting modern, responsive, and engaging web interfaces. I enjoy building clean user experiences using React, JavaScript, and CSS, and I’m always exploring new tools and technologies to improve how users interact with the web.
           </p>
         </div>
       )
     },
     {
       id: 'photo',
-      className: 'md:col-span-1 md:row-span-1 bg-[#1c1d20] border border-white/10 rounded-3xl overflow-hidden group min-h-[160px]',
+      className: 'md:col-span-1 md:row-span-1 bg-[#1c1d20] border border-white/10 rounded-3xl overflow-hidden group min-h-[160px] md:h-56',
       content: (
         <div className="w-full h-full relative">
           <img 
-            src="https://picsum.photos/seed/bandita/400/400" 
+            src="/bento.gif" 
             alt="Profile" 
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1c1d20] to-transparent opacity-40" />
@@ -66,23 +66,25 @@ export const About: React.FC = () => {
     },
     {
       id: 'socials',
-      className: 'md:col-span-1 md:row-span-1 bg-[#1c1d20] border border-white/10 p-6 rounded-3xl flex flex-col justify-between',
+      className: 'md:col-span-1 md:row-span-1 bg-[#1c1d20] border border-white/10 p-6 rounded-3xl flex flex-col justify-between md:h-56',
       content: (
         <>
           <span className="text-[10px] uppercase tracking-widest opacity-40 block mb-4">Socials</span>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 gap-2">
             {[
-              { icon: Linkedin, href: 'http://www.linkedin.com/in/bandita-das-74bb58292' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/bandita-das-74bb58292/' },
               { icon: Github, href: 'https://github.com/BanditaDas' },
-              { icon: Instagram, href: '#' },
-              { icon: Mail, href: 'mailto:dbandita362@gmail.com' }
+              { icon: Instagram, href: 'https://www.instagram.com/_bandita.9_/' },
+              { icon: Mail, href: '#contact' }
             ].map((social, i) => (
               <Magnetic key={i} strength={0.3}>
                 <motion.a 
                   href={social.href} 
+                  target={social.href.startsWith('#') ? "_self" : "_blank"}
+                  rel={social.href.startsWith('#') ? undefined : "noopener noreferrer"}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="aspect-square bg-black/5 dark:bg-white/5 rounded-xl flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500"
+                  className="w-full py-6 md:py-4 lg:py-5 bg-black/5 dark:bg-white/5 rounded-xl flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500"
                 >
                   <social.icon className="w-5 h-5" />
                 </motion.a>
@@ -131,7 +133,7 @@ export const About: React.FC = () => {
       content: (
         <>
           <h4 className="text-xl font-light">Have a project in mind?</h4>
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center justify-between mt-16">
             <Magnetic strength={0.2}>
               <button 
                 onClick={copyEmail}

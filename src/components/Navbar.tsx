@@ -15,6 +15,14 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+    useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    // Cleanup on component unmount
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
+  }, []);
+
   return (
     <nav className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl px-6 py-3 flex justify-between items-center z-50 transition-all duration-300 rounded-full ${scrolled ? 'bg-[#fdfbf7]/80 dark:bg-black/20 backdrop-blur-lg border border-black/5 dark:border-white/5 shadow-sm' : 'bg-transparent'}`}>
       <div className="flex items-end gap-[3px] select-none">
