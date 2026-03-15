@@ -1,0 +1,159 @@
+import React, { useState } from 'react';
+import { motion, useSpring, useMotionValue } from 'motion/react';
+import { Magnetic } from './Magnetic';
+import { ArrowUpRight } from 'lucide-react';
+
+const projects = [
+  { 
+    title: 'Obys Agency', 
+    category: 'UI Clone', 
+    year: '2023',
+    image: 'https://picsum.photos/seed/obys/600/400',
+    description: 'A UI clone of a Ukrainian company called OBYS AGENCY.',
+    link: 'https://banditadas.github.io/Obys-Agency/'
+  },
+  { 
+    title: 'Two Good Co', 
+    category: 'UI Clone', 
+    year: '2023',
+    image: 'https://picsum.photos/seed/twogood/600/400',
+    description: 'A UI clone of an Australian food and product selling company called TWO GOOD CO.',
+    link: 'https://banditadas.github.io/Two-Good-CO/'
+  },
+  { 
+    title: 'Flipkart', 
+    category: 'UI Clone', 
+    year: '2023',
+    image: 'https://picsum.photos/seed/flipkart/600/400',
+    description: 'A UI clone of FLIPKART, a shopping website.',
+    link: 'https://banditadas.github.io/Flipkart-clone/'
+  }
+];
+
+export const Work: React.FC = () => {
+  const [activeProject, setActiveProject] = useState<number | null>(null);
+  const [isHoveringContent, setIsHoveringContent] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 150 };
+  const imageX = useSpring(mouseX, springConfig);
+  const imageY = useSpring(mouseY, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    mouseX.set(clientX);
+    mouseY.set(clientY);
+  };
+
+  return (
+    <section id="work" className="py-12 md:py-20 px-4 md:px-8 relative" onMouseMove={handleMouseMove}>
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16">
+          <h2 className="text-4xl md:text-5xl font-medium flex overflow-hidden">
+            {"Recent Work".split('').map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ y: '100%' }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.03, ease: [0.33, 1, 0.68, 1] }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </h2>
+        </div>
+
+        <div className="border-t border-black/10 dark:border-white/10">
+          {projects.map((project, index) => (
+            <div
+              key={project.title}
+              data-cursor-hide
+              className="group flex flex-col md:flex-row justify-between items-start md:items-center py-6 md:py-10 border-b border-black/10 dark:border-white/10 cursor-pointer relative"
+              onMouseEnter={() => setActiveProject(index)}
+              onMouseLeave={() => {
+                setActiveProject(null);
+                setIsHoveringContent(false);
+              }}
+            >
+              <div className="flex items-center gap-8 z-10 w-full md:w-auto">
+                <h3 
+                  className="text-3xl md:text-5xl lg:text-6xl font-medium transition-all duration-500 group-hover:opacity-40 md:group-hover:translate-x-4"
+                  onMouseEnter={() => setIsHoveringContent(true)}
+                  onMouseLeave={() => setIsHoveringContent(false)}
+                >
+                  {project.title}
+                </h3>
+              </div>
+
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-16 z-10 mt-4 md:mt-0">
+                <p 
+                  className="max-w-xs text-sm opacity-60 hidden lg:block"
+                  onMouseEnter={() => setIsHoveringContent(true)}
+                  onMouseLeave={() => setIsHoveringContent(false)}
+                >
+                  {project.description}
+                </p>
+                <div className="flex items-center gap-8">
+                  <Magnetic strength={0.3}>
+                    <a 
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 px-6 py-3 rounded-full border border-black/20 dark:border-white/20 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn text-sm"
+                      onMouseEnter={() => setIsHoveringContent(true)}
+                      onMouseLeave={() => setIsHoveringContent(false)}
+                    >
+                      <span>Live Website</span>
+                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                    </a>
+                  </Magnetic>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Floating Image Preview */}
+        <motion.div
+          className="fixed top-0 left-0 w-[400px] h-[280px] pointer-events-none z-50 overflow-hidden rounded-xl"
+          style={{
+            x: imageX,
+            y: imageY,
+            translateX: '-50%',
+            translateY: '-50%',
+            scale: activeProject !== null && !isHoveringContent ? 1 : 0,
+            opacity: activeProject !== null && !isHoveringContent ? 1 : 0,
+          }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+        >
+          <div 
+            className="w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
+            style={{ transform: `translateY(-${(activeProject || 0) * 100}%)` }}
+          >
+            {projects.map((project) => (
+              <div key={project.title} className="w-full h-full">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <div className="mt-16 flex justify-center">
+          <Magnetic>
+            <button className="flex items-center gap-2 px-8 py-4 rounded-full border border-black/20 dark:border-white/20 text-base font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn">
+              <span>More Work</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+            </button>
+          </Magnetic>
+        </div>
+      </div>
+    </section>
+  );
+};

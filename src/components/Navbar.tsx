@@ -1,0 +1,50 @@
+import React, { useState, useEffect } from 'react';
+import { Magnetic } from './Magnetic';
+import { Infinity, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../ThemeContext';
+
+export const Navbar: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl px-6 py-3 flex justify-between items-center z-50 transition-all duration-300 rounded-full ${scrolled ? 'bg-[#fdfbf7]/80 dark:bg-black/20 backdrop-blur-lg border border-black/5 dark:border-white/5 shadow-sm' : 'bg-transparent'}`}>
+      <div className="flex items-end gap-[3px] select-none">
+        <span className="text-3xl font-black tracking-tighter text-black dark:text-white leading-none">Bd</span>
+        <div className="w-2.5 h-2.5 bg-[#F05641] rounded-full mb-1.5" />
+      </div>
+      
+      <div className="hidden md:flex gap-8 items-center">
+        {['Home', 'About', 'Work', 'Contact'].map((item) => (
+          <Magnetic key={item}>
+            <a href={item === 'Home' ? '#' : `#${item.toLowerCase()}`} className="nav-link text-sm font-medium text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors">
+              {item}
+            </a>
+          </Magnetic>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <Sun className={`w-4 h-4 ${theme === 'light' ? 'text-black' : 'text-gray-500'}`} />
+          <button 
+            onClick={toggleTheme}
+            className="w-10 h-5 bg-gray-200 dark:bg-gray-700 rounded-full relative transition-colors duration-300 focus:outline-none"
+          >
+            <div className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-transform duration-300 ${theme === 'dark' ? 'translate-x-5' : 'translate-x-1'}`} />
+          </button>
+          <Moon className={`w-4 h-4 ${theme === 'dark' ? 'text-white' : 'text-gray-500'}`} />
+        </div>
+        
+      </div>
+    </nav>
+  );
+};

@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --animate-spin-slow: spin 8s linear infinite;
+}
+
+@layer base {
+  html.lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  body {
+    @apply bg-[#f5f2eb] text-[#1c1d20] dark:bg-[#1c1d20] dark:text-white antialiased transition-colors duration-500;
+    cursor: none;
+  }
+}
+
+@layer components {
+  .magnetic-wrap {
+    @apply relative inline-block;
+  }
+
+  .custom-cursor {
+    @apply fixed top-0 left-0 w-3 h-3 bg-white rounded-sm pointer-events-none z-[9999] mix-blend-difference transition-transform duration-100 ease-out;
+  }
+
+  .custom-cursor.active {
+    @apply scale-[4];
+  }
+
+  .nav-link {
+    @apply relative py-2 overflow-hidden;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-[1px] bg-black dark:bg-white scale-x-0 origin-right transition-transform duration-500 ease-out;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
