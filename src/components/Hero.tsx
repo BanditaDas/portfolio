@@ -46,11 +46,12 @@ const ScrambleText = () => {
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative h-[100vh] flex flex-col justify-center px-4 md:px-8 overflow-hidden">
+    <section className="relative h-[100vh] flex flex-col justify-center px-4 md:px-8 overflow-hidden bg-[#EBEAE9] dark:bg-[#141517]">
       {/* 3D Avatar Video with transparent background */}
       <AvatarVideo />
 
-      <div className="flex justify-between items-end mb-8 relative z-20">
+      <div>
+        <div className="flex justify-between items-end mb-8 relative z-20">
         <div className="flex flex-col gap-3">
           <h2 className="text-xl md:text-2xl font-light leading-tight max-w-sm text-gray-400">
             <ScrambleText />
@@ -58,29 +59,30 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="relative flex overflow-hidden whitespace-nowrap w-full z-20 pointer-events-none">
+      <div className="relative flex overflow-hidden whitespace-nowrap mt-20 h-40 w-full z-20 pointer-events-none">
         <motion.div 
           className="flex"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            duration: 15,
+            duration: 20,
             repeat: Infinity,
             ease: "linear"
           }}
         >
-          <h1 className="text-[10vw] font-semibold leading-[0.8] tracking-tighter uppercase pr-8 flex items-center pt-16">
-            <span>Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
-            <span className="italic font-serif">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
-            <span>Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
-            <span className="italic  font-serif">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+          <h1 className="text-[10vw] font-semibold leading-[0.8] tracking-tighter uppercase pr-8 flex items-center">
+            <span className="inline-block ">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+            <span className="inline-block italic text-transparent [-webkit-text-stroke:2px_black] dark:[-webkit-text-stroke:2px_white]">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+            <span className="inline-block">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+            <span className="inline-block italic text-transparent [-webkit-text-stroke:2px_black] dark:[-webkit-text-stroke:2px_white]">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
           </h1>
           <h1 className="text-[10vw] font-semibold leading-[0.8] tracking-tighter uppercase pr-8 flex items-center">
-            <span>Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
-            <span className="italic font-serif">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
-            <span>Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
-            <span className="italic font-serif">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+            <span className="inline-block">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+            <span className="inline-block italic text-transparent [-webkit-text-stroke:2px_black] dark:[-webkit-text-stroke:2px_white]">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+            <span className="inline-block">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
+            <span className="inline-block italic text-transparent [-webkit-text-stroke:2px_black] dark:[-webkit-text-stroke:2px_white]">Bandita Das</span><span className="mx-4 font-light opacity-50">—</span>
           </h1>
         </motion.div>
+      </div>
       </div>
 
       <div className="absolute bottom-12 left-4 md:left-8 flex items-center gap-3 bg-black/5 dark:bg-white/10 backdrop-blur-md px-6 py-3 rounded-full w-fit transition-colors duration-500 z-20">

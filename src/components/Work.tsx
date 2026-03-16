@@ -47,7 +47,7 @@ export const Work: React.FC = () => {
   };
 
   return (
-    <section id="work" className="py-12 md:py-20 px-4 md:px-8 relative" onMouseMove={handleMouseMove}>
+    <section id="work" className="py-12 md:py-20 px-4 md:px-8 relative bg-[#EBEAE9] dark:bg-[#141517]" onMouseMove={handleMouseMove}>
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16">
           <h2 className="text-5xl md:text-6xl font-medium flex overflow-hidden">
@@ -117,7 +117,7 @@ export const Work: React.FC = () => {
 
         {/* Floating Image Preview */}
         <motion.div
-          className="fixed top-0 left-0 w-[400px] h-[280px] pointer-events-none z-50 overflow-hidden rounded-xl"
+          className="fixed top-0 left-0 w-100 h-70 pointer-events-none z-50 overflow-hidden rounded-xl"
           style={{
             x: imageX,
             y: imageY,

@@ -7,7 +7,7 @@ export const AvatarVideo: React.FC = () => {
   const themeRef = useRef(theme);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     themeRef.current = theme;
@@ -123,7 +123,7 @@ export const AvatarVideo: React.FC = () => {
     };
 
     video.addEventListener('play', () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (animationRef.current !== null) cancelAnimationFrame(animationRef.current);
       animationRef.current = requestAnimationFrame(processFrame);
     });
 
@@ -132,12 +132,12 @@ export const AvatarVideo: React.FC = () => {
 
     // If it's already playing, start processing immediately
     if (!video.paused && !video.ended) {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (animationRef.current !== null) cancelAnimationFrame(animationRef.current);
       animationRef.current = requestAnimationFrame(processFrame);
     }
 
     return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (animationRef.current !== null) cancelAnimationFrame(animationRef.current);
     };
   }, []);
 
@@ -146,12 +146,12 @@ export const AvatarVideo: React.FC = () => {
       className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 overflow-hidden"
     >
       <motion.div
-        className="relative w-full max-w-[350px] md:max-w-[450px] aspect-[3/4] mt-10 md:mt-20"
+        className="relative w-full max-w-[350px] md:max-w-[500px] aspect-[3/4] mt-10 md:mt-20"
       >
         {/* Hidden video element used as the source */}
         <video
           ref={videoRef}
-          src={theme === 'dark' ? "/avatar.mp4" : "/avatarwhite.mp4"}
+          src={theme === 'dark' ? "/avatar.mp4" : "/avatarlight.mp4"}
           autoPlay
           loop
           muted

@@ -3,9 +3,9 @@ import { GlossyName } from './GlossyName';
 
 export const Footer: React.FC = () => {
   return (
-    <footer id="contact" className="relative pt-12 pb-0 bg-[#f5f2eb] dark:bg-[#141517] text-black dark:text-white overflow-hidden transition-colors duration-500">
+    <footer id="contact" className="relative pt-12 pb-0 bg-[#EBEAE9] dark:bg-[#141517] text-black dark:text-white overflow-hidden transition-colors duration-500">
       <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 mb-[-8vw] md:[-6vw]">
-        <div className="bg-[#fdfbf7] dark:bg-[#1c1d20] rounded-[2rem] p-6 md:p-8 lg:p-10 shadow-2xl border border-black/10 dark:border-white/10 transition-colors duration-500">
+        <div className="bg-[#f7f7f7] dark:bg-[#1c1d20] rounded-[2rem] p-6 md:p-8 lg:p-10 shadow-2xl border border-black/10 dark:border-white/10 transition-colors duration-500">
           <div className="flex flex-col lg:flex-row justify-between gap-12 mb-12">
             {/* Left Section */}
             <div className="max-w-md flex flex-col justify-between">

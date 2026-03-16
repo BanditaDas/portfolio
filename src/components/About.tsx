@@ -229,7 +229,7 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-12 md:py-20 px-4 md:px-8 bg-[#f5f2eb] dark:bg-[#141517] text-black dark:text-white overflow-hidden transition-colors duration-500">
+    <section id="about" className="py-12 md:py-20 px-4 md:px-8 bg-[#EBEAE9] dark:bg-[#141517] text-black dark:text-white overflow-hidden transition-colors duration-500">
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {bentoItems.map((item, index) => (
@@ -246,7 +246,7 @@ export const About: React.FC = () => {
               whileHover={{ 
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
-              className={`${item.className.replace('bg-[#1c1d20]', 'bg-[#fdfbf7] dark:bg-[#1c1d20]').replace('border-white/10', 'border-black/5 dark:border-white/10').replace('bg-white/5', 'bg-black/5 dark:bg-white/5').replace('hover:bg-[#222327]', 'hover:bg-[#eae6d9] dark:hover:bg-[#222327]')} transition-all duration-500 hover:border-black/20 dark:hover:border-white/30 hover:shadow-[0_0_40px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.05)]`}
+              className={`${item.className.replace('bg-[#1c1d20]', 'bg-[#f7f7f7] dark:bg-[#1c1d20]').replace('border-white/10', 'border-black/5 dark:border-white/10').replace('bg-white/5', 'bg-black/5 dark:bg-white/5').replace('hover:bg-[#222327]', 'hover:bg-[#e9e9e9] dark:hover:bg-[#222327]')} transition-all duration-500 hover:border-black/20 dark:hover:border-white/30 hover:shadow-[0_0_40px_rgba(0,0,0,0.05)] dark:hover:shadow-[0_0_40px_rgba(255,255,255,0.05)]`}
             >
               <motion.div 
                 className="h-full w-full"
