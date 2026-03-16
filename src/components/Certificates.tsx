@@ -52,7 +52,7 @@ export const Certificates: React.FC = () => {
     <section className="py-20 px-6 md:px-20 bg-[#EBEAE9] dark:bg-[#141517] transition-colors duration-300">
       <div className="max-w-5xl mx-auto">
         <div className="flex justify-between items-center mb-12">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16 ">
             <h2 className="text-5xl md:text-6xl font-medium flex overflow-hidden">
               {"Certificates".split("").map((char, index) => (
                 <motion.span
@@ -71,12 +71,9 @@ export const Certificates: React.FC = () => {
               ))}
             </h2>
           </div>
-          <span className="text-zinc-700 font-mono">
-            {index + 1}/{certificates.length}
-          </span>
         </div>
 
-        <div className="relative flex items-center justify-center gap-4 h-100">
+        <div className="relative flex items-center justify-center gap-4 h-100 ">
           {/* Previous Image */}
           <motion.div className="w-1/4 h-64 opacity-50 hidden md:block">
             <img

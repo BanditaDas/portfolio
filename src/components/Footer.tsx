@@ -78,6 +78,8 @@ export const Footer: React.FC = () => {
             <div className="flex gap-6">
               <a href="https://www.linkedin.com/in/bandita-das-74bb58292/" target='blank' className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">LinkedIn</a>
               <a href="https://github.com/BanditaDas" target='blank' className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">GitHub</a>
+              <a href="/privacy" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">Privacy</a>
+              <a href="/terms" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">Terms</a>
             </div>
           </div>
         </div>

@@ -39,7 +39,7 @@ export const Navbar: React.FC = () => {
         {["Home", "About", "Work", "Contact"].map((item) => (
           <Magnetic key={item}>
             <a
-              href={item === "Home" ? "#" : `#${item.toLowerCase()}`}
+              href={item === "Home" ? "/#" : `/#${item.toLowerCase()}`}
               className="relative nav-link text-[clamp(14px,1vw,18px)] font-medium text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white transition-colors
               after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0
             after:bg-black dark:after:bg-white
