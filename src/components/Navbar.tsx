@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl px-6 py-3 flex justify-between items-center z-50 transition-all duration-300 rounded-full ${scrolled ? 'bg-[#f7f7f7]/80 dark:bg-black/20 backdrop-blur-lg border border-black/5 dark:border-white/5 shadow-sm' : 'bg-transparent'}`}>
-      <div className="flex items-end gap-[3px] select-none">
+      <div className="flex items-end gap-0.75 select-none">
         <span className="text-[clamp(24px,2.4vw,36px)] font-bold tracking-tighter text-black dark:text-white leading-none">Bd</span>
         <div className="w-2.5 h-2.5 bg-[#F05641] rounded-full mb-1.5" />
       </div>

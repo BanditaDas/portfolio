@@ -44,12 +44,12 @@ const ScrambleText = () => {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  return <span className="inline-block min-w-[280px]">{text}</span>;
+  return <span className="inline-block min-w-70">{text}</span>;
 };
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative h-[100vh] flex flex-col justify-center px-4 md:px-8 overflow-hidden bg-[#EBEAE9] dark:bg-[#141517]">
+    <section className="relative h-screen flex flex-col justify-center px-4 md:px-8 overflow-hidden bg-[#EBEAE9] dark:bg-[#141517]">
       {/* 3D Avatar Video with transparent background */}
       <AvatarVideo />
 
@@ -100,7 +100,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <span className="text-sm opacity-50 uppercase tracking-widest">Scroll</span>
-          <div className="w-[1px] h-12 bg-black/20 dark:bg-white/20 transition-colors duration-500" />
+          <div className="w-px h-12 bg-black/20 dark:bg-white/20 transition-colors duration-500" />
         </motion.div>
       </div>
 

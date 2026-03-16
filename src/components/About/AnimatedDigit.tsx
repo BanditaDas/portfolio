@@ -6,7 +6,7 @@ interface Props {
 
 const AnimatedDigit = ({ value }: Props) => {
   return (
-    <div className="relative h-[36px] w-[18px] overflow-hidden">
+    <div className="relative h-9 w-4.5 overflow-hidden">
       <AnimatePresence mode="popLayout">
         <motion.span
           key={value}

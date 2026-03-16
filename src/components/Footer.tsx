@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
   return (
     <footer id="contact" className="relative pt-12 pb-0 bg-[#EBEAE9] dark:bg-[#141517] text-black dark:text-white overflow-hidden transition-colors duration-500">
       <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 mb-[-8vw] md:[-6vw]">
-        <div className="bg-[#f7f7f7] dark:bg-[#1c1d20] rounded-[2rem] p-6 md:p-8 lg:p-10 shadow-2xl border border-black/10 dark:border-white/10 transition-colors duration-500">
+        <div className="bg-[#f7f7f7] dark:bg-[#1c1d20] rounded-4xl p-6 md:p-8 lg:p-10 shadow-2xl border border-black/10 dark:border-white/10 transition-colors duration-500">
           <div className="flex flex-col lg:flex-row justify-between gap-12 mb-12">
             {/* Left Section */}
             <div className="max-w-md flex flex-col justify-between">
@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Right Section - Modern Form */}
-            <div className="w-full lg:w-[400px]">
+            <div className="w-full lg:w-100">
               <form action="https://formsubmit.co/dbandita362@gmail.com" method="POST" className="space-y-4">
                 <input type="hidden" name="_subject" value="New submission from your portfolio!" />
                 <input type="hidden" name="_captcha" value="false" />

@@ -146,7 +146,7 @@ export const AvatarVideo: React.FC = () => {
       className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 overflow-hidden"
     >
       <motion.div
-        className="relative w-full max-w-[350px] md:max-w-[500px] aspect-[3/4] mt-10 md:mt-20"
+        className="relative w-full max-w-87.5 md:max-w-125 aspect-3/4 mt-10 md:mt-20"
       >
         {/* Hidden video element used as the source */}
         <video
