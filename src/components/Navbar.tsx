@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Magnetic } from './Magnetic';
-import { Infinity, Sun, Moon } from 'lucide-react';
+import { LuSunMedium } from "react-icons/lu";
+import { IoIosMoon } from "react-icons/io";
 import { useTheme } from '../ThemeContext';
 
 export const Navbar: React.FC = () => {
@@ -42,14 +43,14 @@ export const Navbar: React.FC = () => {
 
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
-          <Sun className={`w-4 h-4 ${theme === 'light' ? 'text-black' : 'text-gray-500'}`} />
+          <LuSunMedium className={`w-4 h-4 ${theme === 'light' ? 'text-black' : 'text-gray-500'}`} />
           <button 
             onClick={toggleTheme}
             className="w-10 h-5 bg-gray-200 dark:bg-gray-700 rounded-full relative transition-colors duration-300 focus:outline-none"
           >
             <div className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-transform duration-300 ${theme === 'dark' ? 'translate-x-5' : 'translate-x-1'}`} />
           </button>
-          <Moon className={`w-4 h-4 ${theme === 'dark' ? 'text-white' : 'text-gray-500'}`} />
+          <IoIosMoon className={`w-4 h-4 ${theme === 'dark' ? 'text-white' : 'text-gray-500'}`} />
         </div>
         
       </div>

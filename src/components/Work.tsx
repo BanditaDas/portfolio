@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { motion, useSpring, useMotionValue } from 'motion/react';
 import { Magnetic } from './Magnetic';
-import { ArrowUpRight } from 'lucide-react';
+import {
+GoArrowUpRight
+} from "react-icons/go";
 
 const projects = [
   { 
@@ -106,7 +108,7 @@ export const Work: React.FC = () => {
                       onMouseLeave={() => setIsHoveringContent(false)}
                     >
                       <span>Live Website</span>
-                      <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                      <GoArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                     </a>
                   </Magnetic>
                 </div>
@@ -149,7 +151,7 @@ export const Work: React.FC = () => {
           <Magnetic>
             <button className="flex items-center gap-2 px-8 py-4 rounded-full border border-black/20 dark:border-white/20 text-base font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn">
               <span>More Work</span>
-              <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+              <GoArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
             </button>
           </Magnetic>
         </div>

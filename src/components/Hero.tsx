@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Globe, Download } from 'lucide-react';
+import {
+BsFillGlobeCentralSouthAsiaFill
+} from "react-icons/bs";
+import { HiDownload } from "react-icons/hi";
 import { AvatarVideo } from './AvatarVideo';
 import { Magnetic } from './Magnetic';
 
@@ -86,7 +89,7 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className="absolute bottom-12 left-4 md:left-8 flex items-center gap-3 bg-black/5 dark:bg-white/10 backdrop-blur-md px-6 py-3 rounded-full w-fit transition-colors duration-500 z-20">
-        <Globe className="w-5 h-5 animate-spin-slow" />
+        <BsFillGlobeCentralSouthAsiaFill className="w-5 h-5 animate-spin-slow" />
         <span className="text-base font-light">Located in India</span>
       </div>
 
@@ -109,7 +112,7 @@ export const Hero: React.FC = () => {
             className="flex items-center gap-2 px-6 py-3 rounded-full bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn"
           >
             <span className="text-sm font-medium">Resume</span>
-            <Download className="w-4 h-4 transition-transform group-hover/btn:translate-y-1" />
+            <HiDownload className="w-4 h-4 transition-transform group-hover/btn:translate-y-1" />
           </a>
         </Magnetic>
       </div>
