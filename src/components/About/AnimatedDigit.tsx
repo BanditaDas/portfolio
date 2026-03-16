@@ -1,0 +1,26 @@
+import { motion, AnimatePresence } from "motion/react";
+
+interface Props {
+  value: string;
+}
+
+const AnimatedDigit = ({ value }: Props) => {
+  return (
+    <div className="relative h-[36px] w-[18px] overflow-hidden">
+      <AnimatePresence mode="popLayout">
+        <motion.span
+          key={value}
+          initial={{ y: 40 }}
+          animate={{ y: 0 }}
+          exit={{ y: -40 }}
+          transition={{ duration: 0.25 }}
+          className="absolute left-0 right-0 text-center"
+        >
+          {value}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default AnimatedDigit;

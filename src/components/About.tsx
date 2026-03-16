@@ -48,7 +48,10 @@ export const About: React.FC = () => {
   useEffect(() => {
     const fetchContributions = async () => {
       try {
-        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://github.com/users/BanditaDas/contributions')}`);
+        const currentYear = new Date().getFullYear();
+        // Added a timestamp parameter to force AllOrigins to bypass its cache and fetch fresh data
+        const githubUrl = `https://github.com/users/BanditaDas/contributions?from=${currentYear}-01-01&to=${currentYear}-12-31&v=${Date.now()}`;
+        const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(githubUrl)}`);
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         
@@ -66,8 +69,8 @@ export const About: React.FC = () => {
 
         const levels = contributionsData.map(d => d.level);
         if (levels.length > 0) {
-          // Take the last 364 days to exactly fit your 52 columns * 7 rows grid
-          setContributions(levels.slice(-364));
+          // Take the first 364 days of the current year to start from January
+          setContributions(levels.slice(0, 364));
         }
       } catch (error) {
         console.error('Error fetching GitHub contributions:', error);
@@ -82,11 +85,6 @@ export const About: React.FC = () => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  // Dynamically calculate the last 12 months based on the current date
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const currentMonth = new Date().getMonth();
-  const dynamicMonths = Array.from({ length: 12 }, (_, i) => monthNames[(currentMonth - 11 + i + 12) % 12]);
 
   const bentoItems = [
     {
@@ -297,9 +295,7 @@ export const About: React.FC = () => {
           </div>
           <div className="flex-1 flex flex-col justify-end">
             <div className="flex justify-between text-[8px] opacity-40 mb-1 px-1">
-              {dynamicMonths.map((month, index) => (
-                <span key={index}>{month}</span>
-              ))}
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
             </div>
             <div className="flex gap-[3px] items-end opacity-80 group-hover:opacity-100 transition-opacity overflow-hidden justify-between">
               {Array.from({ length: 52 }).map((_, i) => (
@@ -309,19 +305,11 @@ export const About: React.FC = () => {
                     const dayIndex = i * 7 + j;
                     
                     if (contributions.length > 0) {
-                      // Live data mapping
                       const level = contributions[dayIndex] || 0;
                       if (level === 4) bg = "bg-[#39d353]";
                       else if (level === 3) bg = "bg-[#26a641]";
                       else if (level === 2) bg = "bg-[#006d32]";
                       else if (level === 1) bg = "bg-[#0e4429]";
-                    } else {
-                      // Fallback / Loading state
-                      const intensity = Math.random();
-                      if (intensity > 0.85) bg = "bg-[#39d353]";
-                      else if (intensity > 0.65) bg = "bg-[#26a641]";
-                      else if (intensity > 0.45) bg = "bg-[#006d32]";
-                      else if (intensity > 0.25) bg = "bg-[#0e4429]";
                     }
                     
                     return (

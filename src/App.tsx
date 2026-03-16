@@ -7,6 +7,7 @@ import { About } from './components/About';
 import { Work } from './components/Work';
 import { Footer } from './components/Footer';
 import { ThemeProvider } from './ThemeContext';
+import Bento from './components/About/Bento';
 
 export default function App() {
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function App() {
         <CustomCursor />
         <Navbar />
         <Hero />
-        <About />
+        <Bento/>
         <Work />
         <Footer />
       </main>
