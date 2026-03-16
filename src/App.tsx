@@ -3,11 +3,12 @@ import Lenis from 'lenis';
 import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
 import { Work } from './components/Work';
 import { Footer } from './components/Footer';
 import { ThemeProvider } from './ThemeContext';
 import Bento from './components/About/Bento';
+import { Certificate } from 'crypto';
+import { Certificates } from './components/Certificates';
 
 export default function App() {
   useEffect(() => {
@@ -33,6 +34,7 @@ export default function App() {
         <Hero />
         <Bento/>
         <Work />
+        <Certificates />
         <Footer />
       </main>
     </ThemeProvider>
