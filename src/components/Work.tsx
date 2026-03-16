@@ -1,35 +1,35 @@
-import React, { useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'motion/react';
-import { Magnetic } from './Magnetic';
-import {
-GoArrowUpRight
-} from "react-icons/go";
+import React, { useState } from "react";
+import { motion, useSpring, useMotionValue } from "motion/react";
+import { Magnetic } from "./Magnetic";
+import { GoArrowUpRight } from "react-icons/go";
 
 const projects = [
-  { 
-    title: 'Obys Agency', 
-    category: 'UI Clone', 
-    year: '2023',
-    image: 'https://picsum.photos/seed/obys/600/400',
-    description: 'A UI clone of a Ukrainian company called OBYS AGENCY.',
-    link: 'https://banditadas.github.io/Obys-Agency/'
+  {
+    title: "Obys Agency",
+    category: "UI Clone",
+    year: "2023",
+    video: "./obys.mp4",
+    description: "A UI clone of a Ukrainian company called OBYS AGENCY.",
+    link: "https://banditadas.github.io/Obys-Agency/",
   },
-  { 
-    title: 'Exo-Ape', 
-    category: 'UI Clone', 
-    year: '2023',
-    image: 'https://picsum.photos/seed/twogood/600/400',
-    description: 'A UI clone of an Australian food and product selling company called TWO GOOD CO.',
-    link: 'https://exo-ape-j778.vercel.app/'
+  {
+    title: "Exo-Ape",
+    category: "UI Clone",
+    year: "2023",
+    video: "./exoape.mp4",
+    description:
+      "A UI clone of an Australian food and product selling company called TWO GOOD CO.",
+    link: "https://exo-ape-j778.vercel.app/",
   },
-  { 
-    title: 'Work', 
-    category: 'UI Clone', 
-    year: '2023',
-    image: 'https://picsum.photos/seed/flipkart/600/400',
-    description: 'A UI clone of Refokus work page bulid with React JS and for animation I used Framar Motion.',
-    link: 'https://work-ruby-three.vercel.app/'
-  }
+  {
+    title: "Work",
+    category: "UI Clone",
+    year: "2023",
+    video: "./work.mp4",
+    description:
+      "A UI clone of Refokus work page bulid with React JS and for animation I used Framar Motion.",
+    link: "https://work-ruby-three.vercel.app/",
+  },
 ];
 
 export const Work: React.FC = () => {
@@ -49,19 +49,27 @@ export const Work: React.FC = () => {
   };
 
   return (
-    <section id="work" className="py-12 md:py-20 px-4 md:px-8 relative bg-[#EBEAE9] dark:bg-[#141517]" onMouseMove={handleMouseMove}>
+    <section
+      id="work"
+      className="py-12 md:py-20 px-4 md:px-8 relative bg-[#EBEAE9] dark:bg-[#141517]"
+      onMouseMove={handleMouseMove}
+    >
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16">
           <h2 className="text-5xl md:text-6xl font-medium flex overflow-hidden">
-            {"Recent Work".split('').map((char, index) => (
+            {"Recent Work".split("").map((char, index) => (
               <motion.span
                 key={index}
-                initial={{ y: '100%' }}
+                initial={{ y: "100%" }}
                 whileInView={{ y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.03, ease: [0.33, 1, 0.68, 1] }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.03,
+                  ease: [0.33, 1, 0.68, 1],
+                }}
               >
-                {char === ' ' ? '\u00A0' : char}
+                {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
           </h2>
@@ -80,7 +88,7 @@ export const Work: React.FC = () => {
               }}
             >
               <div className="flex items-center gap-8 z-10 w-full md:w-auto">
-                <h3 
+                <h3
                   className="text-4xl md:text-3xl lg:text-4xl font-medium transition-all duration-500 group-hover:opacity-40 md:group-hover:translate-x-4"
                   onMouseEnter={() => setIsHoveringContent(true)}
                   onMouseLeave={() => setIsHoveringContent(false)}
@@ -90,7 +98,7 @@ export const Work: React.FC = () => {
               </div>
 
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-16 z-10 mt-4 md:mt-0">
-                <p 
+                <p
                   className="max-w-xs text-sm opacity-60 hidden lg:block"
                   onMouseEnter={() => setIsHoveringContent(true)}
                   onMouseLeave={() => setIsHoveringContent(false)}
@@ -99,7 +107,7 @@ export const Work: React.FC = () => {
                 </p>
                 <div className="flex items-center gap-8">
                   <Magnetic strength={0.3}>
-                    <a 
+                    <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -123,24 +131,25 @@ export const Work: React.FC = () => {
           style={{
             x: imageX,
             y: imageY,
-            translateX: '-50%',
-            translateY: '-50%',
+            translateX: "-50%",
+            translateY: "-50%",
             scale: activeProject !== null && !isHoveringContent ? 1 : 0,
             opacity: activeProject !== null && !isHoveringContent ? 1 : 0,
           }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
         >
-          <div 
+          <div
             className="w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
             style={{ transform: `translateY(-${(activeProject || 0) * 100}%)` }}
           >
             {projects.map((project) => (
               <div key={project.title} className="w-full h-full">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <video
+                  src={project.video}
                   className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
+                  autoPlay
+                  muted
+                  loop
                 />
               </div>
             ))}
