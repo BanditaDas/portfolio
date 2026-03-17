@@ -56,11 +56,11 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="w-full lg:w-100">
+    <div className="w-full lg:w-100 ">
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4"
+        className="space-y-4 md:space-y-2"
       >
         {/* Name */}
         <div className="space-y-1.5">

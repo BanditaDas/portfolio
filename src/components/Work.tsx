@@ -56,7 +56,7 @@ export const Work: React.FC = () => {
     >
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16">
-          <h2 className="text-5xl md:text-6xl font-medium flex overflow-hidden">
+          <h2 className="text-[12vw] md:text-[8vw] lg:text-6xl font-medium flex overflow-hidden">
             {"Recent Work".split("").map((char, index) => (
               <motion.span
                 key={index}
@@ -88,7 +88,7 @@ export const Work: React.FC = () => {
             >
               <div className="flex items-center gap-8 z-10 w-full md:w-auto">
                 <h3
-                  className="text-4xl md:text-3xl lg:text-4xl font-medium transition-all duration-500 group-hover:opacity-40 md:group-hover:translate-x-4"
+                  className="text-[8vw] md:text-[5vw] lg:text-4xl font-medium transition-all duration-500 group-hover:opacity-40 md:group-hover:translate-x-4"
                   onMouseEnter={() => setIsHoveringContent(true)}
                   onMouseLeave={() => setIsHoveringContent(false)}
                 >
@@ -110,12 +110,12 @@ export const Work: React.FC = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-6 py-3 rounded-full border border-black/20 dark:border-white/20 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn text-sm"
+                      className="flex items-center gap-2 px-6 py-3 rounded-full border border-black/20 dark:border-white/20 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn text-[3.5vw] md:text-[2vw] lg:text-sm"
                       onMouseEnter={() => setIsHoveringContent(true)}
                       onMouseLeave={() => setIsHoveringContent(false)}
                     >
                       <span>Live Website</span>
-                      <GoArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+                      <GoArrowUpRight className="w-[4vw] h-[4vw] md:w-[2.5vw] md:h-[2.5vw] lg:w-4 lg:h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
                     </a>
                   </Magnetic>
                 </div>
@@ -157,9 +157,9 @@ export const Work: React.FC = () => {
 
         <div className="mt-16 flex justify-center">
           <Magnetic>
-            <button className="flex items-center gap-2 px-8 py-4 rounded-full border border-black/20 dark:border-white/20 text-base font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn">
+            <button className="flex items-center gap-2 px-8 py-4 rounded-full border border-black/20 dark:border-white/20 text-[4vw] md:text-[2.5vw] lg:text-base font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn">
               <span>More Work</span>
-              <GoArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+              <GoArrowUpRight className="w-[4.5vw] h-[4.5vw] md:w-[3vw] md:h-[3vw] lg:w-4 lg:h-4 transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
             </button>
           </Magnetic>
         </div>

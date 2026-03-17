@@ -28,11 +28,11 @@ const SocialCard = () => {
 
   return (
     <>
-      <span className="text-[10px] uppercase tracking-widest opacity-40 block mb-4">
+      <span className="text-[10px] lg:text-xs uppercase tracking-widest opacity-40 block mb-2 lg:mb-4">
         Socials
       </span>
 
-      <div className="grid grid-cols-2 gap-y-4 gap-x-5">
+      <div className="grid grid-cols-2 gap-2 md:gap-y-2 md:gap-x-2 lg:gap-y-4 lg:gap-x-5">
         {socials.map((social, i) => (
           <Magnetic key={i} strength={0.3}>
             <motion.a
@@ -43,9 +43,9 @@ const SocialCard = () => {
               }
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
-              className="py-6 md:py-4 lg:py-6 bg-black/5 dark:bg-white/5 rounded-xl flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500"
+              className="py-3 md:py-5 lg:py-6 bg-black/5 dark:bg-white/5 rounded-xl flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500"
             >
-              <social.icon className="w-5 h-5" />
+              <social.icon className="w-7 h-7 lg:w-5 lg:h-5" />
             </motion.a>
           </Magnetic>
         ))}

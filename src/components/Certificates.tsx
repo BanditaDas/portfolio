@@ -137,8 +137,8 @@ export const Certificates: React.FC = () => {
 
   return (
     <section id="certificates" className="py-12 md:py-20 px-4 md:px-8 bg-[#EBEAE9] dark:bg-[#141517] ">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16 px-50">
-        <h2 className="text-5xl md:text-6xl font-medium flex overflow-hidden">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16 lg:px-50">
+        <h2 className="text-[12vw] md:text-[8vw] lg:text-6xl font-medium flex overflow-hidden">
           {"Certificates".split("").map((char, index) => (
             <motion.span
               key={index}
@@ -180,7 +180,7 @@ export const Certificates: React.FC = () => {
               className="w-full h-full object-cover"
             />
             <div className="absolute top-4 right-4 bg-white/20 dark:bg-black/60 backdrop-blur-md rounded-full p-2">
-              <LuArrowUpRight className="text-white" size={20} />
+              <LuArrowUpRight className="text-white w-[5vw] h-[5vw] md:w-[3vw] md:h-[3vw] lg:w-5 lg:h-5" />
             </div>
             <motion.div
               className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/95 via-black/60 to-transparent"
@@ -191,8 +191,8 @@ export const Certificates: React.FC = () => {
               }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-white font-bold text-lg">{cert.title}</h3>
-              <p className="text-zinc-300 text-sm">
+              <h3 className="text-white font-bold text-[5vw] md:text-[3vw] lg:text-lg">{cert.title}</h3>
+              <p className="text-zinc-300 text-[3.5vw] md:text-[2vw] lg:text-sm">
                 {cert.issuer} • {cert.year}
               </p>
             </motion.div>
@@ -220,17 +220,17 @@ export const Certificates: React.FC = () => {
                 className="absolute top-4 right-4 p-2 bg-zinc-200 dark:bg-zinc-800 rounded-full"
                 onClick={() => setSelectedCert(null)}
               >
-                <IoClose size={24} />
+                <IoClose className="w-[6vw] h-[6vw] md:w-[4vw] md:h-[4vw] lg:w-6 lg:h-6" />
               </button>
               <img
                 src={selectedCert.image}
                 alt={selectedCert.title}
                 className="w-full h-auto rounded-2xl mb-6"
               />
-              <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-2">
+              <h3 className="text-[6vw] md:text-[4vw] lg:text-2xl font-bold text-zinc-900 dark:text-white mb-2">
                 {selectedCert.title}
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 text-lg">
+              <p className="text-zinc-600 dark:text-zinc-400 text-[4vw] md:text-[2.5vw] lg:text-lg">
                 {selectedCert.issuer} • {selectedCert.year}
               </p>
             </motion.div>

@@ -14,37 +14,37 @@ const Bento: React.FC = () => {
     {
       id: "intro",
       component: <IntroCard />,
-      span: "md:col-span-2 md:row-span-1",
+      className: "col-span-1 md:col-span-2 lg:col-span-2 min-h-[25vh] md:min-h-[22vh] lg:min-h-[30vh]",
     },
     {
       id: "photo",
       component: <PhotoCard />,
-      span: "md:col-span-1 md:row-span-1",
+      className: "col-span-1 md:col-span-1 lg:col-span-1 min-h-[40vw] md:min-h-[22vh] lg:min-h-[30vh]",
     },
     {
       id: "social",
       component: <SocialCard />,
-      span: "md:col-span-1 md:row-span-1",
+      className: "col-span-1 md:col-span-1 lg:col-span-1 min-h-[40vw] md:min-h-[22vh] lg:min-h-[30vh]",
     },
     {
       id: "stack",
       component: <StackCard />,
-      span: "md:col-span-3 md:row-span-1",
+      className: "col-span-1 md:col-span-2 lg:col-span-3 min-h-[28vh] md:min-h-[20vh] lg:min-h-[25vh]",
     },
     {
       id: "contact",
       component: <ContactCard />,
-      span: "md:col-span-1 md:row-span-1",
+      className: "col-span-1 md:col-span-1 lg:col-span-1 min-h-[20vh] md:min-h-[20vh] lg:min-h-[25vh]",
     },
     {
       id: "location",
       component: <LocationCard />,
-      span: "md:col-span-1 md:row-span-1",
+      className: "col-span-1 md:col-span-1 lg:col-span-1 min-h-[40vw] md:min-h-[20vh] lg:min-h-[25vh]",
     },
     {
       id: "github",
       component: <GithubCard />,
-      span: "md:col-span-3 md:row-span-1",
+      className: "col-span-1 md:col-span-2 lg:col-span-3 min-h-[25vh] md:min-h-[20vh] lg:min-h-[25vh]",
     },
   ];
 
@@ -56,14 +56,14 @@ const Bento: React.FC = () => {
       className="py-12 md:py-20 px-4 md:px-8 bg-[#EBEAE9] dark:bg-[#141517]"
     >
       <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
           {cards.map((card, index) => (
             <motion.div
               key={card.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className={`${card.span} group relative rounded-3xl h-full`}
+              className={`${card.className} group relative rounded-3xl h-full`}
             >
               {/* Glow background */}
               <div className="absolute -inset-px rounded-3xl bg-black/70 dark:bg-white/40 opacity-0 group-hover:opacity-30 blur-md transition duration-500 " />

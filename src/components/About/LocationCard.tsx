@@ -31,14 +31,14 @@ const LocationCard = () => {
   const [s1, s2] = time.second.split("");
 
   return (
-    <div className="h-full flex flex-col justify-between gap-2">
+    <div className="h-full flex flex-col justify-between gap-1 lg:gap-2">
       <div className="flex justify-between opacity-40">
-        <RiMapPin2Line />
-        <RiTimeLine />
+        <RiMapPin2Line className="w-5 h-5 lg:w-5 lg:h-5" />
+        <RiTimeLine className="w-5 h-5 lg:w-5 lg:h-5" />
       </div>
 
       <div>
-        <div className="flex gap-1 text-3xl font-light pb-2">
+        <div className="flex gap-1 text-2xl lg:text-3xl font-light pb-1 lg:pb-2">
           <div className="flex gap-0.3">
             <AnimatedDigit value={h1} />
             <AnimatedDigit value={h2} />
@@ -59,7 +59,7 @@ const LocationCard = () => {
           </div>
         </div>
 
-        <p className="text-sm opacity-60">Based in India</p>
+        <p className="text-xs lg:text-sm opacity-60">Based in India</p>
       </div>
     </div>
   );

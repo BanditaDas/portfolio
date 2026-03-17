@@ -26,8 +26,8 @@ export const Footer: React.FC = () => {
       id="contact"
       className="relative pt-12 pb-0 bg-[#EBEAE9] dark:bg-[#141517] text-black dark:text-white overflow-hidden "
     >
-      <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 mb-[-8vw] md:[-6vw]">
-        <div className="bg-[#f7f7f7] dark:bg-[#1c1d20] rounded-4xl p-6 md:p-8 lg:p-10 shadow-2xl border border-black/10 dark:border-white/10 transition-colors duration-500">
+      <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 mb-[-8vw] md:[-6vw] ">
+        <div className="bg-[#f7f7f7] dark:bg-[#1c1d20] rounded-4xl p-6 md:p-8 lg:p-10 shadow-2xl border border-black/10 dark:border-white/10 transition-colors duration-500 ">
           <div className="flex flex-col lg:flex-row justify-between gap-12 mb-12">
             {/* Left Section */}
             <div className="max-w-md flex flex-col justify-between">
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Bottom Section */}
-          <div className="pt-6 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="pt-3 md:pt-3 lg:mt-6 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-gray-500">
               © {new Date().getFullYear()} Bandita. All rights reserved.
             </p>
@@ -152,7 +152,7 @@ export const Footer: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
             onClick={() => setShowPopup(false)}
           >
             <motion.div

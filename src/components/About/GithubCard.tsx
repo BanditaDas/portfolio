@@ -9,12 +9,12 @@ const GithubCard = () => {
 
   return (
     <div className="h-full flex flex-col justify-between gap-3">
-      <div className="flex justify-between items-center ">
-        <span className="text-[10px] uppercase tracking-widest opacity-40">
+      <div className="flex justify-between items-center mb-1 lg:mb-0">
+        <span className="text-[10px] lg:text-xs uppercase tracking-widest opacity-40">
           GitHub Contributions
         </span>
 
-        <RiGithubLine className="w-4 h-4 opacity-40" />
+        <RiGithubLine className="w-3.5 h-3.5 lg:w-4 lg:h-4 opacity-40" />
       </div>
 
       <div className="flex justify-center w-full overflow-hidden">
