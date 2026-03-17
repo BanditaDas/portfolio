@@ -1,17 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { GlossyName } from './GlossyName';
 import { ContactForm } from './ContactForm';
 
 export const Footer: React.FC = () => {
   return (
-    <footer id="contact" className="relative pt-12 pb-0 bg-[#EBEAE9] dark:bg-[#141517] text-black dark:text-white overflow-hidden transition-colors duration-500">
+    <footer id="contact" className="relative pt-12 pb-0 bg-[#EBEAE9] dark:bg-[#141517] text-black dark:text-white overflow-hidden ">
       <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 mb-[-8vw] md:[-6vw]">
         <div className="bg-[#f7f7f7] dark:bg-[#1c1d20] rounded-4xl p-6 md:p-8 lg:p-10 shadow-2xl border border-black/10 dark:border-white/10 transition-colors duration-500">
           <div className="flex flex-col lg:flex-row justify-between gap-12 mb-12">
             {/* Left Section */}
             <div className="max-w-md flex flex-col justify-between">
               <div>
-                <h3 className="text-3xl md:text-4xl font-medium mb-4 leading-tight">
+                <h3 className="text-3xl md:text-3xl font-medium mb-4 leading-tight">
                   <span className='text-5xl md:text-6xl font-medium'>Let's build </span><br />something great together.
                 </h3>
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed">
@@ -80,8 +81,8 @@ export const Footer: React.FC = () => {
             <div className="flex gap-6">
               <a href="https://www.linkedin.com/in/bandita-das-74bb58292/" target='blank' className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">LinkedIn</a>
               <a href="https://github.com/BanditaDas" target='blank' className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">GitHub</a>
-              <a href="/privacy" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">Privacy</a>
-              <a href="/terms" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">Terms</a>
+              <Link to="/privacy" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">Privacy</Link>
+              <Link to="/terms" className="text-xs text-gray-500 hover:text-black dark:hover:text-white transition-colors">Terms</Link>
             </div>
           </div>
         </div>

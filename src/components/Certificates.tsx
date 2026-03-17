@@ -126,7 +126,7 @@ export const Certificates: React.FC = () => {
   >(null);
 
   return (
-    <section className="py-20 bg-[#EBEAE9] dark:bg-[#141517] transition-colors duration-300">
+    <section id="certificates" className="py-12 md:py-20 px-4 md:px-8 bg-[#EBEAE9] dark:bg-[#141517] ">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16 px-50">
         <h2 className="text-5xl md:text-6xl font-medium flex overflow-hidden">
           {"Certificates".split("").map((char, index) => (
@@ -147,7 +147,7 @@ export const Certificates: React.FC = () => {
         </h2>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="max-w-8xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {certificates.map((cert) => (
           <motion.div
             key={cert.id}

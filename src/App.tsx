@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -10,6 +11,16 @@ import Bento from './components/About/Bento';
 import { Certificates } from './components/Certificates';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsAndConditions } from './components/TermsAndConditions';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
 
 export default function App() {
   useEffect(() => {
@@ -27,32 +38,28 @@ export default function App() {
     };
   }, []);
 
-  const path = window.location.pathname;
-
-  let content;
-  if (path === '/privacy') {
-    content = <PrivacyPolicy />;
-  } else if (path === '/terms') {
-    content = <TermsAndConditions />;
-  } else {
-    content = (
-      <>
-        <Hero />
-        <Bento />
-        <Work />
-        <Certificates />
-      </>
-    );
-  }
-
   return (
     <ThemeProvider>
-      <main className="relative min-h-screen font-sans">
-        <CustomCursor />
-        <Navbar />
-        {content}
-        <Footer />
-      </main>
+      <Router>
+        <ScrollToTop />
+        <main className="relative min-h-screen font-sans">
+          <CustomCursor />
+          <Navbar />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <Bento />
+                <Work />
+                <Certificates />
+              </>
+            } />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+          </Routes>
+          <Footer />
+        </main>
+      </Router>
     </ThemeProvider>
   );
 }

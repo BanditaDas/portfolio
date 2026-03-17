@@ -73,7 +73,7 @@ export const ContactForm = () => {
                     ${
                       errors.name
                         ? "border-red-500 placeholder:text-red-400"
-                        : "border-black/10 dark:border-white/10 placeholder:text-black dark:placeholder:text-white"
+                        : "border-black/10 dark:border-white/10 placeholder:text-black/40 dark:placeholder:text-white/40 outline-none"
                     }`}
             placeholder={errors.name ? errors.name.message : "John Doe"}
           />
@@ -98,7 +98,7 @@ export const ContactForm = () => {
                         ${
                           errors.email
                             ? "border-red-500 placeholder:text-red-400"
-                            : "border-black/10 dark:border-white/10 placeholder:text-black dark:placeholder:text-white"
+                            : "border-black/10 dark:border-white/10 placeholder:text-black/40 dark:placeholder:text-white/40 outline-none"
                         }`}
             placeholder={
               errors.email ? errors.email.message : "john@example.com"
@@ -124,7 +124,7 @@ export const ContactForm = () => {
   ${
     errors.message
       ? "border-red-500 placeholder:text-red-400"
-      : "border-black/10 dark:border-white/10 placeholder:text-black dark:placeholder:text-white"
+      : "border-black/10 dark:border-white/10  placeholder:text-black/40 dark:placeholder:text-white/40 outline-none"
   }
   `}
             placeholder={
