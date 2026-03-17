@@ -37,20 +37,26 @@ const LocationCard = () => {
         <RiTimeLine />
       </div>
 
-      <div >
+      <div>
         <div className="flex gap-1 text-3xl font-light pb-2">
-          <AnimatedDigit value={h1} />
-          <AnimatedDigit value={h2} />
+          <div className="flex gap-0.3">
+            <AnimatedDigit value={h1} />
+            <AnimatedDigit value={h2} />
+          </div>
 
           <span>:</span>
 
-          <AnimatedDigit value={m1} />
-          <AnimatedDigit value={m2} />
+          <div className="flex gap-0.5">
+            <AnimatedDigit value={m1} />
+            <AnimatedDigit value={m2} />
+          </div>
 
           <span>:</span>
 
-          <AnimatedDigit value={s1} />
-          <AnimatedDigit value={s2} />
+          <div className="flex gap-0.5">
+            <AnimatedDigit value={s1} />
+            <AnimatedDigit value={s2} />
+          </div>
         </div>
 
         <p className="text-sm opacity-60">Based in India</p>

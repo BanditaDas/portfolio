@@ -1,5 +1,6 @@
 import React from 'react';
 import { GlossyName } from './GlossyName';
+import { ContactForm } from './ContactForm';
 
 export const Footer: React.FC = () => {
   return (
@@ -11,10 +12,10 @@ export const Footer: React.FC = () => {
             <div className="max-w-md flex flex-col justify-between">
               <div>
                 <h3 className="text-3xl md:text-4xl font-medium mb-4 leading-tight">
-                  Let's build something great together.
+                  <span className='text-5xl md:text-6xl font-medium'>Let's build </span><br />something great together.
                 </h3>
                 <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                  Feel free to reach out for collaborations, or just a friendly hello. I'm always open to discussing new projects.
+                  Feel free to reach out for collaborations, or just a friendly hello. <br /> I'm always open to discussing new projects.
                 </p>
               </div>
               
@@ -27,7 +28,7 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Right Section - Modern Form */}
-            <div className="w-full lg:w-100">
+            {/* <div className="w-full lg:w-100">
               <form action="https://formsubmit.co/dbandita362@gmail.com" method="POST" className="space-y-4">
                 <input type="hidden" name="_subject" value="New submission from your portfolio!" />
                 <input type="hidden" name="_captcha" value="false" />
@@ -67,7 +68,8 @@ export const Footer: React.FC = () => {
                   Send Message
                 </button>
               </form>
-            </div>
+            </div> */}
+            <ContactForm />
           </div>
 
           {/* Bottom Section */}
