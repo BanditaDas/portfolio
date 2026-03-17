@@ -10,9 +10,11 @@ export const CustomCursor: React.FC = () => {
   useEffect(() => {
     const styleElement = document.createElement('style');
     styleElement.innerHTML = `
-      html, body, a, button, input, textarea, select, [role="button"] {
-        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>'), auto !important;
-      } 
+      @media (min-width: 768px) {
+        html, body, a, button, input, textarea, select, [role="button"] {
+          cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>'), auto !important;
+        }
+      }
     `;
     document.head.appendChild(styleElement);
 
@@ -41,7 +43,7 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <motion.div
-      className="custom-cursor"
+      className="custom-cursor hidden md:block"
       style={{
         x: mouseX,
         y: mouseY,
