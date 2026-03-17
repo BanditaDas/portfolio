@@ -25,7 +25,7 @@ const certificates = [
   },
   {
     id: 3,
-    title: "Introduction To Machine Learning",
+    title: "Introduction To ML",
     issuer: "NPTEL",
     year: "2025",
     image: "./certificates/NPTEL ss.png",
@@ -124,6 +124,16 @@ export const Certificates: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<
     (typeof certificates)[0] | null
   >(null);
+
+  // Prevent background scrolling when a certificate is open
+  useEffect(() => {
+    if (selectedCert) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [selectedCert]);
 
   return (
     <section id="certificates" className="py-12 md:py-20 px-4 md:px-8 bg-[#EBEAE9] dark:bg-[#141517] ">

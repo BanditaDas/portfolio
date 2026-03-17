@@ -9,7 +9,7 @@ const projects = [
     category: "UI Clone",
     year: "2023",
     video: "./obys.mp4",
-    description: "A UI clone of a Ukrainian company called OBYS AGENCY.",
+    description: "A creative agency website clone featuring advanced animations, smooth scrolling, and interactive elements. The project recreates a modern design-focused website using HTML, CSS, JavaScript, and animation libraries like GSAP for a highly engaging user experience.",
     link: "https://banditadas.github.io/Obys-Agency/",
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     year: "2023",
     video: "./exoape.mp4",
     description:
-      "A UI clone of an Australian food and product selling company called TWO GOOD CO.",
+      "A visually rich website inspired by modern creative agency designs. It showcases bold typography, smooth scrolling interactions, and immersive animations to create a dynamic and engaging frontend experience.",
     link: "https://exo-ape-j778.vercel.app/",
   },
   {
@@ -27,7 +27,7 @@ const projects = [
     year: "2023",
     video: "./work.mp4",
     description:
-      "A UI clone of Refokus work page bulid with React JS and for animation I used Framar Motion.",
+      "A modern web experience built with smooth animations and interactive UI elements. The project focuses on creating an engaging user interface with fluid transitions, responsive design, and visually appealing layouts to deliver a polished browsing experience.",
     link: "https://work-ruby-three.vercel.app/",
   },
 ];
@@ -79,7 +79,6 @@ export const Work: React.FC = () => {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              data-cursor-hide
               className="group flex flex-col md:flex-row justify-between items-start md:items-center py-6 md:py-10 border-b border-black/10 dark:border-white/10 cursor-pointer relative"
               onMouseEnter={() => setActiveProject(index)}
               onMouseLeave={() => {
@@ -99,7 +98,7 @@ export const Work: React.FC = () => {
 
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-16 z-10 mt-4 md:mt-0">
                 <p
-                  className="max-w-xs text-sm opacity-60 hidden lg:block"
+                  className="max-w-sm text-sm opacity-60 hidden lg:block"
                   onMouseEnter={() => setIsHoveringContent(true)}
                   onMouseLeave={() => setIsHoveringContent(false)}
                 >

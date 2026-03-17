@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 
 export const TermsAndConditions: React.FC = () => (
-  <div className="py-20 px-6 md:px-20 bg-[#EBEAE9] dark:bg-[#141517] min-h-screen">
+  <div className="pt-32 pb-20 md:pt-30 px-6 md:px-20 bg-[#EBEAE9] dark:bg-[#141517] min-h-screen">
     <div className="max-w-3xl mx-auto text-zinc-900 dark:text-stone-100">
       <h1 className="text-5xl font-bold mb-8">Terms and Conditions</h1>
       <p className="mb-8 opacity-70">Last updated: March 17, 2026</p>

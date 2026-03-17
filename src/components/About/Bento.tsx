@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
 
 import IntroCard from "./IntroCard";
@@ -11,14 +11,44 @@ import GithubCard from "./GithubCard";
 
 const Bento: React.FC = () => {
   const cards = [
-    { id: "intro", component: <IntroCard />, span: "md:col-span-2 md:row-span-1" },
-    { id: "photo", component: <PhotoCard />, span: "md:col-span-1 md:row-span-1" },
-    { id: "social", component: <SocialCard />, span: "md:col-span-1 md:row-span-1" },
-    { id: "stack", component: <StackCard />, span: "md:col-span-3 md:row-span-1" },
-    { id: "contact", component: <ContactCard />, span: "md:col-span-1 md:row-span-1" },
-    { id: "location", component: <LocationCard />, span: "md:col-span-1 md:row-span-1" },
-    { id: "github", component: <GithubCard />, span: "md:col-span-3 md:row-span-1" },
+    {
+      id: "intro",
+      component: <IntroCard />,
+      span: "md:col-span-2 md:row-span-1",
+    },
+    {
+      id: "photo",
+      component: <PhotoCard />,
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: "social",
+      component: <SocialCard />,
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: "stack",
+      component: <StackCard />,
+      span: "md:col-span-3 md:row-span-1",
+    },
+    {
+      id: "contact",
+      component: <ContactCard />,
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: "location",
+      component: <LocationCard />,
+      span: "md:col-span-1 md:row-span-1",
+    },
+    {
+      id: "github",
+      component: <GithubCard />,
+      span: "md:col-span-3 md:row-span-1",
+    },
   ];
+
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   return (
     <section
@@ -27,19 +57,23 @@ const Bento: React.FC = () => {
     >
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-
           {cards.map((card, index) => (
             <motion.div
               key={card.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className={`${card.span} bg-[#f7f7f7] dark:bg-[#1c1d20] border border-black/5 dark:border-white/10 p-6 rounded-3xl`}
+              className={`${card.span} group relative rounded-3xl h-full`}
             >
-              {card.component}
+              {/* Glow background */}
+              <div className="absolute -inset-px rounded-3xl bg-black/70 dark:bg-white/40 opacity-0 group-hover:opacity-30 blur-md transition duration-500 " />
+
+              {/* Card */}
+              <div className="relative w-full h-full bg-[#f7f7f7] dark:bg-[#1c1d20] border border-black/5 dark:border-white/10 p-6 rounded-3xl flex flex-col hover:border-black/30 hover:dark:border-white/30">
+                {card.component}
+              </div>
             </motion.div>
           ))}
-
         </div>
       </div>
     </section>

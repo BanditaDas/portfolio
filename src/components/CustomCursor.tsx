@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'motion/react';
+import { motion, useMotionValue } from 'motion/react';
 
 export const CustomCursor: React.FC = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const [isActive, setIsActive] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
-
-  const springConfig = { damping: 20, stiffness: 250 };
-  const cursorX = useSpring(mouseX, springConfig);
-  const cursorY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
     const styleElement = document.createElement('style');
@@ -47,8 +43,8 @@ export const CustomCursor: React.FC = () => {
     <motion.div
       className="custom-cursor"
       style={{
-        x: cursorX,
-        y: cursorY,
+        x: mouseX,
+        y: mouseY,
         translateX: '-50%',
         translateY: '-50%',
       }}
