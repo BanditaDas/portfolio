@@ -56,20 +56,20 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="w-full lg:w-100 ">
+    <div className="w-full lg:w-100 min-[2000px]:w-[35vw] ">
       <form
         id="contact-form"
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4 md:space-y-2"
+        className="space-y-4 md:space-y-2 min-[2000px]:space-y-[2vh]"
       >
         {/* Name */}
-        <div className="space-y-1.5">
-          <label className="text-xs font-medium text-gray-400 px-1">Name</label>
+        <div className="space-y-1.5 min-[2000px]:space-y-[1vh]">
+          <label className="text-xs min-[2000px]:text-[0.8vw] font-medium text-gray-400 px-1 min-[2000px]:px-[0.5vw]">Name</label>
 
           <input
             type="text"
             {...register("name", { required: "Name is required" })}
-            className={`w-full bg-black/5 dark:bg-white/5 border rounded-xl px-4 py-3 text-sm
+            className={`w-full bg-black/5 dark:bg-white/5 border rounded-xl min-[2000px]:rounded-[0.8vw] px-4 py-3 min-[2000px]:px-[2vw] min-[2000px]:py-[1.5vh] text-sm min-[2000px]:text-[1vw]
                     ${
                       errors.name
                         ? "border-red-500 placeholder:text-red-400"
@@ -80,8 +80,8 @@ export const ContactForm = () => {
         </div>
 
         {/* Email */}
-        <div className="space-y-1.5">
-          <label className="text-xs font-medium text-gray-400 px-1">
+        <div className="space-y-1.5 min-[2000px]:space-y-[1vh]">
+          <label className="text-xs min-[2000px]:text-[0.8vw] font-medium text-gray-400 px-1 min-[2000px]:px-[0.5vw]">
             Email
           </label>
 
@@ -94,7 +94,7 @@ export const ContactForm = () => {
                 message: "Enter a valid email",
               },
             })}
-            className={`w-full bg-black/5 dark:bg-white/5 border rounded-xl px-4 py-3 text-sm
+            className={`w-full bg-black/5 dark:bg-white/5 border rounded-xl min-[2000px]:rounded-[0.8vw] px-4 py-3 min-[2000px]:px-[2vw] min-[2000px]:py-[1.5vh] text-sm min-[2000px]:text-[1vw]
                         ${
                           errors.email
                             ? "border-red-500 placeholder:text-red-400"
@@ -107,8 +107,8 @@ export const ContactForm = () => {
         </div>
 
         {/* Message */}
-        <div className="space-y-1.5">
-          <label className="text-xs font-medium text-gray-400 px-1">
+        <div className="space-y-1.5 min-[2000px]:space-y-[1vh]">
+          <label className="text-xs min-[2000px]:text-[0.8vw] font-medium text-gray-400 px-1 min-[2000px]:px-[0.5vw]">
             Message
           </label>
           <textarea
@@ -120,7 +120,7 @@ export const ContactForm = () => {
                 message: "Message should be at least 10 characters",
               },
             })}
-            className={`w-full bg-black/5 dark:bg-white/5 border rounded-xl px-4 py-3 text-sm resize-none
+            className={`w-full bg-black/5 dark:bg-white/5 border rounded-xl min-[2000px]:rounded-[0.8vw] px-4 py-3 min-[2000px]:px-[2vw] min-[2000px]:py-[1.5vh] text-sm min-[2000px]:text-[1vw] resize-none
   ${
     errors.message
       ? "border-red-500 placeholder:text-red-400"
@@ -138,7 +138,7 @@ export const ContactForm = () => {
         <button
           type="submit"
           disabled={isSubmitting || isSuccess}
-          className={`w-full font-semibold rounded-xl px-4 py-3 transition-all duration-300 text-sm ${
+          className={`w-full font-semibold rounded-xl min-[2000px]:rounded-[0.8vw] px-4 py-3 min-[2000px]:px-[2vw] min-[2000px]:py-[1.5vh] transition-all duration-300 text-sm min-[2000px]:text-[1vw] ${
             isSubmitting
               ? "bg-black text-white dark:bg-white dark:text-black opacity-50 cursor-not-allowed"
               : isSuccess

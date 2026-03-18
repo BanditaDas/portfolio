@@ -136,9 +136,9 @@ export const Certificates: React.FC = () => {
   }, [selectedCert]);
 
   return (
-    <section id="certificates" className="py-12 md:py-20 px-4 md:px-8 bg-[#EBEAE9] dark:bg-[#141517] ">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 md:mb-16 lg:px-50">
-        <h2 className="text-[12vw] md:text-[8vw] lg:text-6xl font-medium flex overflow-hidden">
+    <section id="certificates" className="py-12 md:py-20 min-[2000px]:py-[10vh] px-4 md:px-8 min-[2000px]:px-[5vw] bg-[#EBEAE9] dark:bg-[#141517] ">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 min-[2000px]:gap-[3vw] mb-12 md:mb-16 min-[2000px]:mb-[8vh] lg:px-50 min-[2000px]:px-[10vw]">
+        <h2 className="text-[12vw] md:text-[8vw] lg:text-6xl min-[2000px]:text-[5vw] font-medium flex overflow-hidden">
           {"Certificates".split("").map((char, index) => (
             <motion.span
               key={index}
@@ -157,11 +157,11 @@ export const Certificates: React.FC = () => {
         </h2>
       </div>
 
-      <div className="max-w-8xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="max-w-8xl min-[2000px]:max-w-[80vw] mx-auto px-6 min-[2000px]:px-[3vw] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 min-[2000px]:gap-[2vw]">
         {certificates.map((cert) => (
           <motion.div
             key={cert.id}
-            className="relative w-full h-60 cursor-pointer overflow-hidden rounded-3xl"
+            className="relative w-full h-60 min-[2000px]:h-[25vh] cursor-pointer overflow-hidden rounded-3xl min-[2000px]:rounded-[2vw]"
             animate={{
               filter:
                 hoveredId !== null && hoveredId !== cert.id
@@ -179,11 +179,11 @@ export const Certificates: React.FC = () => {
               alt={cert.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-4 right-4 bg-white/20 dark:bg-black/60 backdrop-blur-md rounded-full p-2">
-              <LuArrowUpRight className="text-white w-[5vw] h-[5vw] md:w-[3vw] md:h-[3vw] lg:w-5 lg:h-5" />
+            <div className="absolute top-4 right-4 min-[2000px]:top-[2vh] min-[2000px]:right-[2vw] bg-white/20 dark:bg-black/60 backdrop-blur-md rounded-full p-2 min-[2000px]:p-[1vw]">
+              <LuArrowUpRight className="text-white w-[5vw] h-[5vw] md:w-[3vw] md:h-[3vw] lg:w-5 lg:h-5 min-[2000px]:w-[1.5vw] min-[2000px]:h-[1.5vw]" />
             </div>
             <motion.div
-              className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-black/95 via-black/60 to-transparent"
+              className="absolute bottom-0 left-0 right-0 p-6 min-[2000px]:p-[3vw] bg-linear-to-t from-black/95 via-black/60 to-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{
                 opacity: hoveredId === cert.id ? 1 : 0,
@@ -191,8 +191,8 @@ export const Certificates: React.FC = () => {
               }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="text-white font-bold text-[5vw] md:text-[3vw] lg:text-lg">{cert.title}</h3>
-              <p className="text-zinc-300 text-[3.5vw] md:text-[2vw] lg:text-sm">
+              <h3 className="text-white font-bold text-[5vw] md:text-[3vw] lg:text-lg min-[2000px]:text-[1.5vw]">{cert.title}</h3>
+              <p className="text-zinc-300 text-[3.5vw] md:text-[2vw] lg:text-sm min-[2000px]:text-[1vw]">
                 {cert.issuer} • {cert.year}
               </p>
             </motion.div>
@@ -213,24 +213,24 @@ export const Certificates: React.FC = () => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white dark:bg-zinc-900 p-6 rounded-3xl max-w-2xl w-full relative"
+              className="bg-white dark:bg-zinc-900 p-6 min-[2000px]:p-[3vw] rounded-3xl min-[2000px]:rounded-[2vw] max-w-2xl min-[2000px]:max-w-[40vw] w-full relative"
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                className="absolute top-4 right-4 p-2 bg-zinc-200 dark:bg-zinc-800 rounded-full"
+                className="absolute top-4 right-4 min-[2000px]:top-[2vh] min-[2000px]:right-[2vw] p-2 min-[2000px]:p-[1vw] bg-zinc-200 dark:bg-zinc-800 rounded-full"
                 onClick={() => setSelectedCert(null)}
               >
-                <IoClose className="w-[6vw] h-[6vw] md:w-[4vw] md:h-[4vw] lg:w-6 lg:h-6" />
+                <IoClose className="w-[6vw] h-[6vw] md:w-[4vw] md:h-[4vw] lg:w-6 lg:h-6 min-[2000px]:w-[2vw] min-[2000px]:h-[2vw]" />
               </button>
               <img
                 src={selectedCert.image}
                 alt={selectedCert.title}
-                className="w-full h-auto rounded-2xl mb-6"
+                className="w-full h-auto rounded-2xl min-[2000px]:rounded-[1vw] mb-6"
               />
-              <h3 className="text-[6vw] md:text-[4vw] lg:text-2xl font-bold text-zinc-900 dark:text-white mb-2">
+              <h3 className="text-[6vw] md:text-[4vw] lg:text-2xl min-[2000px]:text-[2vw] font-bold text-zinc-900 dark:text-white mb-2 min-[2000px]:mb-[1vh]">
                 {selectedCert.title}
               </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 text-[4vw] md:text-[2.5vw] lg:text-lg">
+              <p className="text-zinc-600 dark:text-zinc-400 text-[4vw] md:text-[2.5vw] lg:text-lg min-[2000px]:text-[1.2vw]">
                 {selectedCert.issuer} • {selectedCert.year}
               </p>
             </motion.div>
