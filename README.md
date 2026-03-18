@@ -42,13 +42,13 @@ This portfolio was built to showcase:
 **Frontend**
 
 * React
-* TypeScript / JavaScript
+* TypeScript & JavaScript
 * Tailwind CSS
 
 **Libraries & Tools**
 
 * React Icons
-* Motion / Animation libraries
+* Motion & Animation libraries
 * Git & GitHub
 
 **Deployment**
@@ -71,14 +71,6 @@ portfolio/
 │
 └── package.json
 ```
-
----
-
-# 📸 Preview
-
-You can view the live version here:
-
-🔗 [https://portfolio-six-theta-37.vercel.app/](https://portfolio-six-theta-37.vercel.app/)
 
 ---
 
