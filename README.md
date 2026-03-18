@@ -1,20 +1,100 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+# 🌐 Personal Portfolio
 
-View your app in AI Studio: https://ai.studio/apps/5568c9d3-3fb3-4071-83b4-ad8c5d0a3857
+This repository contains the source code for my **personal developer portfolio website**, where I showcase my projects, skills, and experience as a frontend developer.
 
-## Run Locally
+🚀 **Live Website:**
+👉 [https://portfolio-six-theta-37.vercel.app/](https://portfolio-six-theta-37.vercel.app/)
 
-**Prerequisites:**  Node.js
+---
 
+# 👋 About Me
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Hi, I'm **Bandita Das** — a passionate **Frontend Developer** who enjoys building modern, responsive, and interactive web experiences.
+
+I focus on creating clean UI, smooth animations, and performance-optimized web applications using modern frontend technologies.
+
+This portfolio was built to showcase:
+
+* My projects
+* My technical skills
+* My developer journey
+* Ways to contact me
+
+---
+
+# ⚡ Features
+
+* 🎨 Modern UI/UX design
+* 🌙 Dark / Light theme toggle
+* 📱 Fully responsive design
+* 🧭 Smooth animations and transitions
+* 🧑‍💻 Projects showcase section
+* 📬 Contact form integration
+* 🔗 Social media links
+
+---
+
+# 🛠️ Tech Stack
+
+**Frontend**
+
+* React
+* TypeScript / JavaScript
+* Tailwind CSS
+
+**Libraries & Tools**
+
+* React Icons
+* Motion / Animation libraries
+* Git & GitHub
+
+**Deployment**
+
+* Vercel
+
+---
+
+# 📂 Project Structure
+
+```
+portfolio/
+│
+├── public/        
+├── src/
+│   ├── components 
+│   ├── pages     
+│   ├── assets     
+│   └── styles     
+│
+└── package.json
+```
+
+---
+
+# 📸 Preview
+
+You can view the live version here:
+
+🔗 [https://portfolio-six-theta-37.vercel.app/](https://portfolio-six-theta-37.vercel.app/)
+
+---
+
+# 📬 Contact
+
+If you'd like to collaborate or connect:
+
+* GitHub: [https://github.com/BanditaDas](https://github.com/BanditaDas)
+* LinkedIn: [https://www.linkedin.com/in/bandita-das-74bb58292/](https://www.linkedin.com/in/bandita-das-74bb58292/)
+
+---
+
+# ⭐ Support
+
+If you like this project, consider **starring the repository ⭐**.
+It helps others discover my work!
+
+---
+
