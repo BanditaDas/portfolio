@@ -62,14 +62,18 @@ This portfolio was built to showcase:
 ```
 portfolio/
 │
-├── public/        
-├── src/
-│   ├── components 
-│   ├── pages     
-│   ├── assets     
-│   └── styles     
+├── public/            
 │
-└── package.json
+├── src/
+│   ├── components/    
+│   ├── assets/        
+│   ├── context/       
+│   ├── App.tsx        
+│   ├── main.tsx       
+│
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
 ---
