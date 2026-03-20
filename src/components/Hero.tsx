@@ -107,7 +107,7 @@ export const Hero: React.FC = () => {
       <div className="absolute bottom-8 md:bottom-12 min-[2000px]:bottom-[5vh] right-4 md:right-7 min-[2000px]:right-[4vw] z-20">
         <Magnetic strength={0.2}>
           <a 
-            href="/Bandita_Das_new.pdf"
+            href="/Bandita_Das_resume.pdf"
             download
             className="flex items-center gap-1.5 md:gap-2 min-[2000px]:gap-[1vw] px-4 py-2 md:px-6 md:py-3 min-[2000px]:px-[2vw] min-[2000px]:py-[1vh] rounded-full bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn"
           >
