@@ -185,7 +185,7 @@ export const Footer: React.FC = () => {
                   
                   <Magnetic strength={0.3}>
                     <motion.a
-                      href="https://www.linkedin.com/in/bandita-das-74bb58292/"
+                      href="https://www.linkedin.com/in/banditadas-dev/"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, rotate: 5 }}

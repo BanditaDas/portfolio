@@ -10,7 +10,7 @@ const SocialCard = () => {
   const socials = [
     {
       icon: RiLinkedinFill,
-      href: "https://www.linkedin.com/in/bandita-das-74bb58292/",
+      href: "https://www.linkedin.com/in/banditadas-dev/",
     },
     {
       icon: RiGithubLine,
