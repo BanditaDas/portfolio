@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, useSpring, useMotionValue } from "motion/react";
 import { Magnetic } from "./Magnetic";
 import { GoArrowUpRight } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
@@ -157,10 +158,10 @@ export const Work: React.FC = () => {
 
         <div className="mt-16 min-[2000px]:mt-[8vh] flex justify-center">
           <Magnetic>
-            <button className="flex items-center gap-2 min-[2000px]:gap-[1vw] px-8 py-4 min-[2000px]:px-[4vw] min-[2000px]:py-[2vh] rounded-full border border-black/20 dark:border-white/20 text-[4vw] md:text-[2.5vw] lg:text-base min-[2000px]:text-[1.2vw] font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn">
+            <Link to="/projects" className="flex items-center gap-2 min-[2000px]:gap-[1vw] px-8 py-4 min-[2000px]:px-[4vw] min-[2000px]:py-[2vh] rounded-full border border-black/20 dark:border-white/20 text-[4vw] md:text-[2.5vw] lg:text-base min-[2000px]:text-[1.2vw] font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group/btn">
               <span>More Work</span>
               <GoArrowUpRight className="w-[4.5vw] h-[4.5vw] md:w-[3vw] md:h-[3vw] lg:w-4 lg:h-4 min-[2000px]:w-[1.2vw] min-[2000px]:h-[1.2vw] transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
-            </button>
+            </Link>
           </Magnetic>
         </div>
       </div>

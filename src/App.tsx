@@ -9,6 +9,7 @@ import { Footer } from './components/Footer';
 import { ThemeProvider } from './ThemeContext';
 import Bento from './components/About/Bento';
 import { Certificates } from './components/Certificates';
+import { AllProjects } from './components/AllProjects';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsAndConditions } from './components/TermsAndConditions';
 
@@ -54,6 +55,7 @@ export default function App() {
                 <Certificates />
               </>
             } />
+            <Route path="/projects" element={<AllProjects />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
           </Routes>
