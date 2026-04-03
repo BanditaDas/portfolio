@@ -1,166 +1,228 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { LuArrowUpRight } from "react-icons/lu";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from 'react-router-dom';
 import { CustomCursor } from './CustomCursor';
 import { Navbar } from './Navbar';
+import { Footer } from './Footer';
 
 const allProjects = [
+  { 
+    title: 'The Roseline Ring', 
+    category: 'Rings', 
+    year: '2023',
+    image: 'https://picsum.photos/seed/ring1/600/800',
+    link: '#'
+  },
+  { 
+    title: 'The Zoë Earrings', 
+    category: 'Earrings', 
+    year: '2023',
+    image: 'https://picsum.photos/seed/earring1/600/800',
+    link: '#'
+  },
+  { 
+    title: 'The Hibiscus Ring II', 
+    category: 'Rings', 
+    year: '2024',
+    image: 'https://picsum.photos/seed/ring2/600/800',
+    link: '#'
+  },
+  { 
+    title: 'The Chubby Hoops', 
+    category: 'Earrings', 
+    year: '2024',
+    image: 'https://picsum.photos/seed/earring2/600/800',
+    link: '#'
+  },
+  { 
+    title: 'The Chain Necklace', 
+    category: 'Necklaces', 
+    year: '2023',
+    image: 'https://picsum.photos/seed/neck1/600/800',
+    link: '#'
+  },
   { 
     title: 'Obys Agency', 
     category: 'UI Clone', 
     year: '2023',
-    image: 'https://picsum.photos/seed/obys/600/400',
-    description: 'A UI clone of a Ukrainian company called OBYS AGENCY.',
+    image: 'https://picsum.photos/seed/obys/600/800',
     link: 'https://banditadas.github.io/Obys-Agency/'
   },
   { 
     title: 'Two Good Co', 
     category: 'UI Clone', 
     year: '2023',
-    image: 'https://picsum.photos/seed/twogood/600/400',
-    description: 'A UI clone of an Australian food and product selling company called TWO GOOD CO.',
+    image: 'https://picsum.photos/seed/twogood/600/800',
     link: 'https://banditadas.github.io/Two-Good-CO/'
   },
   { 
     title: 'Flipkart', 
     category: 'UI Clone', 
     year: '2023',
-    image: 'https://picsum.photos/seed/flipkart/600/400',
-    description: 'A UI clone of FLIPKART, a shopping website.',
+    image: 'https://picsum.photos/seed/flipkart/600/800',
     link: 'https://banditadas.github.io/Flipkart-clone/'
-  },
-  { 
-    title: 'Sundown Studio', 
-    category: 'UI Clone', 
-    year: '2023',
-    image: 'https://picsum.photos/seed/sundown/600/400',
-    description: 'A UI clone of Sundown Studio website.',
-    link: 'https://banditadas.github.io/Sundown-Studio/'
-  },
-  { 
-    title: 'Refokus', 
-    category: 'UI Clone', 
-    year: '2023',
-    image: 'https://picsum.photos/seed/refokus/600/400',
-    description: 'A UI clone of Refokus agency website.',
-    link: 'https://banditadas.github.io/Refokus-Clone/'
-  },
-  { 
-    title: 'Cynthia Ugwu', 
-    category: 'UI Clone', 
-    year: '2023',
-    image: 'https://picsum.photos/seed/cynthia/600/400',
-    description: 'A UI clone of Cynthia Ugwu portfolio.',
-    link: 'https://banditadas.github.io/Cynthia-Ugwu-Clone/'
   }
 ];
 
-const ProjectCard = ({ project, index, progress, range, targetScale }: any) => {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start end', 'start start']
-  });
-
-  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
-  const scale = useTransform(progress, range, [1, targetScale]);
-
-  return (
-    <div ref={container} className="h-screen flex items-center justify-center sticky top-0">
-      <motion.div 
-        style={{ scale, top: `calc(-5vh + ${index * 25}px)` }} 
-        className="relative flex flex-col w-full max-w-5xl h-[70vh] rounded-[30px] overflow-hidden origin-top shadow-2xl"
-      >
-        <div className="w-full h-full relative overflow-hidden bg-zinc-900">
-          <motion.div style={{ scale: imageScale }} className="w-full h-full">
-            <img 
-              src={project.image} 
-              alt={project.title} 
-              className="w-full h-full object-cover opacity-80"
-              referrerPolicy="no-referrer"
-            />
-          </motion.div>
-          <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
-          
-          <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between">
-            <div className="flex justify-between items-start">
-              <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm border border-white/20">
-                {project.category}
-              </span>
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform"
-              >
-                <LuArrowUpRight size={28} />
-              </a>
-            </div>
-            
-            <div>
-              <h2 className="text-5xl md:text-7xl font-bold text-white mb-4">{project.title}</h2>
-              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 text-white/80 text-lg">
-                <span className="font-mono">{project.year}</span>
-                <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-white/50" />
-                <p className="max-w-xl">{project.description}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-};
-
 export const AllProjects: React.FC = () => {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start start', 'end end']
-  });
+  const [activeIndex, setActiveIndex] = useState(2);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleNext = () => {
+    setActiveIndex((prev) => Math.min(allProjects.length - 1, prev + 1));
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => Math.max(0, prev - 1));
+  };
 
   return (
     <>
       <CustomCursor />
       <Navbar />
-      <section className="pt-32 md:pt-40 px-4 md:px-8 bg-[#EBEAE9] dark:bg-[#141517] transition-colors duration-300">
-        <div className="max-w-6xl mx-auto mb-10">
-          <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium opacity-60 hover:opacity-100 transition-opacity mb-8">
-            <FaArrowLeftLong className="w-4 h-4" />
-            Back to Home
-          </Link>
-          <h1 className="text-6xl md:text-8xl font-medium flex overflow-hidden">
-            {"All Projects".split('').map((char, index) => (
-              <motion.span
-                key={index}
-                initial={{ y: '100%' }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.03, ease: [0.33, 1, 0.68, 1] }}
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </motion.span>
-            ))}
-          </h1>
+      <section className="pt-32 md:pt-40 pb-20 px-4 md:px-8 min-h-screen bg-[#EBEAE9] dark:bg-[#141517] transition-colors duration-300 overflow-hidden flex flex-col">
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="mb-8 md:mb-12">
+            <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium opacity-60 hover:opacity-100 transition-opacity mb-8">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
+            </Link>
+            <h1 className="text-5xl md:text-7xl font-medium flex overflow-hidden">
+              {"Archive".split('').map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ y: '100%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.03, ease: [0.33, 1, 0.68, 1] }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+              ))}
+            </h1>
+          </div>
         </div>
 
-        <div ref={container} className="relative pb-[10vh]">
+        <div 
+          className="flex-1 relative w-full flex items-center justify-center min-h-[500px] md:min-h-[600px]"
+          style={{ perspective: 1200 }}
+        >
           {allProjects.map((project, index) => {
-            const targetScale = 1 - ((allProjects.length - index) * 0.05);
+            const offset = index - activeIndex;
+            const isCenter = offset === 0;
+            const direction = Math.sign(offset);
+            const absOffset = Math.abs(offset);
+
+            const rotateY = isCenter ? 0 : direction * -35;
+            const translateZ = absOffset * -150;
+            const translateX = offset * (isMobile ? 120 : 220);
+            const scale = isCenter ? 1 : 0.85;
+            const zIndex = 100 - absOffset;
+            const opacity = absOffset > 3 ? 0 : 1;
+
             return (
-              <ProjectCard 
-                key={project.title} 
-                project={project} 
-                index={index} 
-                progress={scrollYProgress} 
-                range={[index * (1 / allProjects.length), 1]} 
-                targetScale={targetScale} 
-              />
+              <motion.div
+                key={project.title + index}
+                className="absolute w-[260px] md:w-[360px] h-[380px] md:h-[520px] rounded-3xl overflow-hidden cursor-pointer shadow-2xl border border-white/10"
+                initial={false}
+                animate={{
+                  rotateY,
+                  z: translateZ,
+                  x: `calc(-50% + ${translateX}px)`,
+                  y: "-50%",
+                  scale,
+                  opacity,
+                }}
+                transition={{ type: "spring", stiffness: 150, damping: 20, mass: 1 }}
+                onClick={() => setActiveIndex(index)}
+                style={{
+                  left: "50%",
+                  top: "50%",
+                  transformStyle: "preserve-3d",
+                  zIndex,
+                }}
+              >
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                
+                {/* Top Badge */}
+                <div className="absolute top-5 left-5">
+                  <span className="px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-medium border border-white/10">
+                    {project.category}
+                  </span>
+                </div>
+
+                {/* Bottom Text */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <h3 className="text-white text-xl md:text-2xl font-medium tracking-wide uppercase">
+                    {project.title}
+                  </h3>
+                </div>
+                
+                {/* Center Card Extra UI (Link button) */}
+                <AnimatePresence>
+                  {isCenter && project.link !== '#' && (
+                    <motion.a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ArrowUpRight className="w-5 h-5" />
+                    </motion.a>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>
+
+        <div className="max-w-7xl mx-auto w-full flex justify-center items-center gap-6 mt-8">
+          <button 
+            onClick={handlePrev} 
+            disabled={activeIndex === 0}
+            className="p-3 rounded-full border border-black/20 dark:border-white/20 disabled:opacity-30 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <div className="flex gap-2">
+            {allProjects.map((_, i) => (
+              <button 
+                key={i} 
+                onClick={() => setActiveIndex(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${i === activeIndex ? 'bg-black dark:bg-white' : 'bg-black/20 dark:bg-white/20'}`} 
+                aria-label={`Go to project ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          <button 
+            onClick={handleNext}
+            disabled={activeIndex === allProjects.length - 1}
+            className="p-3 rounded-full border border-black/20 dark:border-white/20 disabled:opacity-30 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
       </section>
+      <Footer />
     </>
   );
 };
