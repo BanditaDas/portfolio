@@ -1,12 +1,10 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { LuArrowUpRight } from "react-icons/lu";
-import { Magnetic } from './Magnetic';
 import { Link } from 'react-router-dom';
 import { CustomCursor } from './CustomCursor';
 import { Navbar } from './Navbar';
-import { Footer } from './Footer';
 
 const allProjects = [
   { 
@@ -59,70 +57,110 @@ const allProjects = [
   }
 ];
 
+const ProjectCard = ({ project, index, progress, range, targetScale }: any) => {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start end', 'start start']
+  });
+
+  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
+  const scale = useTransform(progress, range, [1, targetScale]);
+
+  return (
+    <div ref={container} className="h-screen flex items-center justify-center sticky top-0">
+      <motion.div 
+        style={{ scale, top: `calc(-5vh + ${index * 25}px)` }} 
+        className="relative flex flex-col w-full max-w-5xl h-[70vh] rounded-[30px] overflow-hidden origin-top shadow-2xl"
+      >
+        <div className="w-full h-full relative overflow-hidden bg-zinc-900">
+          <motion.div style={{ scale: imageScale }} className="w-full h-full">
+            <img 
+              src={project.image} 
+              alt={project.title} 
+              className="w-full h-full object-cover opacity-80"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
+          
+          <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between">
+            <div className="flex justify-between items-start">
+              <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm border border-white/20">
+                {project.category}
+              </span>
+              <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform"
+              >
+                <LuArrowUpRight size={28} />
+              </a>
+            </div>
+            
+            <div>
+              <h2 className="text-5xl md:text-7xl font-bold text-white mb-4">{project.title}</h2>
+              <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 text-white/80 text-lg">
+                <span className="font-mono">{project.year}</span>
+                <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-white/50" />
+                <p className="max-w-xl">{project.description}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 export const AllProjects: React.FC = () => {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end end']
+  });
+
   return (
     <>
       <CustomCursor />
       <Navbar />
-      <section className="py-32 md:py-40 px-4 md:px-8 min-h-screen bg-[#fdfbf7] dark:bg-[#0a0a0a] transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
-            <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium opacity-60 hover:opacity-100 transition-opacity mb-8">
-              <FaArrowLeftLong className="w-4 h-4" />
-              Back to Home
-            </Link>
-            <h1 className="text-5xl md:text-7xl font-medium flex overflow-hidden">
-              {"All Projects".split('').map((char, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ y: '100%' }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.03, ease: [0.33, 1, 0.68, 1] }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </motion.span>
-              ))}
-            </h1>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col gap-4"
+      <section className="pt-32 md:pt-40 px-4 md:px-8 bg-[#EBEAE9] dark:bg-[#141517] transition-colors duration-300">
+        <div className="max-w-6xl mx-auto mb-10">
+          <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium opacity-60 hover:opacity-100 transition-opacity mb-8">
+            <FaArrowLeftLong className="w-4 h-4" />
+            Back to Home
+          </Link>
+          <h1 className="text-6xl md:text-8xl font-medium flex overflow-hidden">
+            {"All Projects".split('').map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ y: '100%' }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.03, ease: [0.33, 1, 0.68, 1] }}
               >
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-2xl relative aspect-video">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="bg-white text-black rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                      <LuArrowUpRight className="w-6 h-6" />
-                    </div>
-                  </div>
-                </a>
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-2xl font-medium">{project.title}</h3>
-                    <span className="text-sm opacity-60">{project.year}</span>
-                  </div>
-                  <p className="text-sm opacity-60 mb-4">{project.description}</p>
-                  <span className="inline-block px-3 py-1 text-xs rounded-full border border-black/10 dark:border-white/10">
-                    {project.category}
-                  </span>
-                </div>
-              </motion.div>
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
             ))}
-          </div>
+          </h1>
+        </div>
+
+        <div ref={container} className="relative pb-[10vh]">
+          {allProjects.map((project, index) => {
+            const targetScale = 1 - ((allProjects.length - index) * 0.05);
+            return (
+              <ProjectCard 
+                key={project.title} 
+                project={project} 
+                index={index} 
+                progress={scrollYProgress} 
+                range={[index * (1 / allProjects.length), 1]} 
+                targetScale={targetScale} 
+              />
+            );
+          })}
         </div>
       </section>
-      <Footer />
     </>
   );
 };
