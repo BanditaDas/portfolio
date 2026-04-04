@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { LuArrowUpRight } from "react-icons/lu";
+import { MdOutlineChevronRight, MdOutlineChevronLeft } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { CustomCursor } from './CustomCursor';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 
-const allProjects = [
+const fallbackProjects = [
   { 
     title: 'The Roseline Ring', 
     category: 'Rings', 
@@ -65,9 +67,55 @@ const allProjects = [
   }
 ];
 
+interface Project {
+  title: string;
+  category: string;
+  year: string;
+  image: string;
+  link: string;
+}
+
 export const AllProjects: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const response = await fetch('https://api.github.com/users/banditadas/repos?sort=created&direction=desc');
+        if (!response.ok) throw new Error('Failed to fetch');
+        const data = await response.json();
+        
+        const formattedProjects = data
+          .filter((repo: any) => !repo.fork) // Filter out forks
+          .map((repo: any) => ({
+            title: repo.name.replace(/-/g, ' '),
+            category: repo.language || 'Project',
+            year: new Date(repo.created_at).getFullYear().toString(),
+            image: `https://opengraph.githubassets.com/1/banditadas/${repo.name}`,
+            link: repo.homepage || repo.html_url
+          }));
+          
+        if (formattedProjects.length > 0) {
+          setProjects(formattedProjects);
+          setActiveIndex(Math.floor(formattedProjects.length / 2));
+        } else {
+          setProjects(fallbackProjects);
+          setActiveIndex(2);
+        }
+      } catch (error) {
+        console.error("Error fetching repos:", error);
+        setProjects(fallbackProjects);
+        setActiveIndex(2);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRepos();
+  }, []);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -77,7 +125,7 @@ export const AllProjects: React.FC = () => {
   }, []);
 
   const handleNext = () => {
-    setActiveIndex((prev) => Math.min(allProjects.length - 1, prev + 1));
+    setActiveIndex((prev) => Math.min(projects.length - 1, prev + 1));
   };
 
   const handlePrev = () => {
@@ -92,7 +140,7 @@ export const AllProjects: React.FC = () => {
         <div className="max-w-7xl mx-auto w-full">
           <div className="mb-8 md:mb-12">
             <Link to="/" className="inline-flex items-center gap-2 text-sm font-medium opacity-60 hover:opacity-100 transition-opacity mb-8">
-              <ArrowLeft className="w-4 h-4" />
+              <FaArrowLeftLong className="w-4 h-4" />
               Back to Home
             </Link>
             <h1 className="text-5xl md:text-7xl font-medium flex overflow-hidden">
@@ -114,7 +162,12 @@ export const AllProjects: React.FC = () => {
           className="flex-1 relative w-full flex items-center justify-center min-h-[500px] md:min-h-[600px]"
           style={{ perspective: 1200 }}
         >
-          {allProjects.map((project, index) => {
+          {loading ? (
+            <div className="flex flex-col items-center justify-center gap-4">
+              <div className="w-8 h-8 border-4 border-black/20 dark:border-white/20 border-t-black dark:border-t-white rounded-full animate-spin" />
+              <p className="text-sm font-medium opacity-60">Loading GitHub Projects...</p>
+            </div>
+          ) : projects.map((project, index) => {
             const offset = index - activeIndex;
             const isCenter = offset === 0;
             const direction = Math.sign(offset);
@@ -184,7 +237,7 @@ export const AllProjects: React.FC = () => {
                       className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-lg"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <ArrowUpRight className="w-5 h-5" />
+                      <LuArrowUpRight className="w-5 h-5" />
                     </motion.a>
                   )}
                 </AnimatePresence>
@@ -196,14 +249,14 @@ export const AllProjects: React.FC = () => {
         <div className="max-w-7xl mx-auto w-full flex justify-center items-center gap-6 mt-8">
           <button 
             onClick={handlePrev} 
-            disabled={activeIndex === 0}
+            disabled={activeIndex === 0 || loading}
             className="p-3 rounded-full border border-black/20 dark:border-white/20 disabled:opacity-30 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <MdOutlineChevronLeft className="w-5 h-5" />
           </button>
           
-          <div className="flex gap-2">
-            {allProjects.map((_, i) => (
+          <div className="flex gap-2 flex-wrap justify-center max-w-[60vw]">
+            {!loading && projects.map((_, i) => (
               <button 
                 key={i} 
                 onClick={() => setActiveIndex(i)}
@@ -215,10 +268,10 @@ export const AllProjects: React.FC = () => {
 
           <button 
             onClick={handleNext}
-            disabled={activeIndex === allProjects.length - 1}
+            disabled={activeIndex === projects.length - 1 || loading}
             className="p-3 rounded-full border border-black/20 dark:border-white/20 disabled:opacity-30 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
           >
-            <ChevronRight className="w-5 h-5" />
+            <MdOutlineChevronRight className="w-5 h-5" />
           </button>
         </div>
       </section>
