@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { CustomCursor } from './CustomCursor';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { Magnetic } from './Magnetic';
 
 const fallbackProjects = [
   { 
@@ -169,16 +170,18 @@ export const AllProjects: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-16 md:mt-24 flex justify-center"
           >
-            <a
-              href="https://github.com/banditadas"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-black/20 dark:border-white/20 text-base font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group"
-            >
-              <LuGithub className="w-5 h-5" />
-              <span>View GitHub Profile</span>
-              <LuArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </a>
+            <Magnetic>
+              <a
+                href="https://github.com/banditadas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-black/20 dark:border-white/20 text-base font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group"
+              >
+                <LuGithub className="w-5 h-5" />
+                <span>View GitHub Profile</span>
+                <LuArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </a>
+            </Magnetic>
           </motion.div>
         </div>
       </section>
