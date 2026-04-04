@@ -185,7 +185,6 @@ export const AllProjects: React.FC = () => {
           </motion.div>
         </div>
       </section>
-      <Footer />
     </>
   );
 };
