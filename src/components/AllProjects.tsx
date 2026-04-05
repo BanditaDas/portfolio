@@ -137,7 +137,6 @@ export const AllProjects: React.FC = () => {
   return (
     <>
       <CustomCursor />
-      <Navbar />
       <section className="pt-32 md:pt-40 pb-20 px-4 md:px-8 min-h-screen bg-[#EBEAE9] dark:bg-[#141517] transition-colors duration-300 flex flex-col">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12 md:mb-20">
