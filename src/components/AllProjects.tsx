@@ -70,18 +70,52 @@ export const AllProjects: React.FC = () => {
         const response = await fetch('https://api.github.com/users/banditadas/repos?sort=created&direction=desc');
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
+        // console.log("GitHub API Response:", data);
         
-        const formattedProjects = data
+        const topRepos = data
           .filter((repo: any) => !repo.fork) // Filter out forks
-          .slice(0, 5) // Limit to recent 5 repos
-          .map((repo: any) => ({
-            title: repo.name.replace(/-/g, ' '),
-            category: repo.language || 'Project',
-            year: new Date(repo.created_at).getFullYear().toString(),
-            image: `https://opengraph.githubassets.com/1/banditadas/${repo.name}`,
-            link: repo.homepage || repo.html_url,
-            description: repo.description || 'A modern web experience built with smooth animations and interactive UI elements. The project focuses on creating an engaging user interface with fluid transitions, responsive design, and visually appealing layouts.'
-          }));
+          .slice(0, 5); // Limit to recent 5 repos
+
+        const formattedProjects = await Promise.all(
+          topRepos.map(async (repo: any) => {
+            let description = repo.description;
+            
+            try {
+              // Fetch raw README content
+              const readmeResponse = await fetch(`https://raw.githubusercontent.com/banditadas/${repo.name}/${repo.default_branch}/README.md`);
+              if (readmeResponse.ok) {
+                const readmeText = await readmeResponse.text();
+                const lines = readmeText
+                  .split('\n')
+                  .map(line => line.trim())
+                  .filter(line => 
+                    line.length > 0 && 
+                    !line.startsWith('#') && 
+                    !line.startsWith('---') && 
+                    !line.startsWith('![') &&
+                    !line.startsWith('<') // Exclude headings, dividers, images, and HTML tags
+                  )
+                  .slice(0, 3); // Get the first 3 valid text lines
+
+                if (lines.length > 0) {
+                  // Join the lines and strip out basic markdown links and bolding
+                  description = lines.join(' ').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/(\*\*|__)/g, '');
+                }
+              }
+            } catch (error) {
+              console.warn(`Could not fetch README for ${repo.name}`, error);
+            }
+
+            return {
+              title: repo.name.replace(/-/g, ' '),
+              category: repo.language || 'Project',
+              year: new Date(repo.created_at).getFullYear().toString(),
+              image: `https://opengraph.githubassets.com/1/banditadas/${repo.name}`,
+              link: repo.homepage || repo.html_url,
+              description: description || 'A modern web experience built with smooth animations and interactive UI elements. The project focuses on creating an engaging user interface with fluid transitions, responsive design, and visually appealing layouts.'
+            };
+          })
+        );
           
         if (formattedProjects.length > 0) {
           setProjects(formattedProjects);
@@ -98,6 +132,7 @@ export const AllProjects: React.FC = () => {
 
     fetchRepos();
   }, []);
+
 
   return (
     <>
