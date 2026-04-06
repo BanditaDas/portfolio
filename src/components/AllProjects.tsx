@@ -10,45 +10,35 @@ import { Magnetic } from './Magnetic';
 
 const fallbackProjects = [
   { 
-    title: 'Obys Agency', 
-    category: 'UI Clone', 
-    year: '2023',
+    title: 'FocusFly', 
     image: 'https://picsum.photos/seed/obys/600/800',
-    link: 'https://banditadas.github.io/Obys-Agency/',
-    description: 'A creative agency website clone featuring advanced animations, smooth scrolling, and interactive elements. The project recreates a modern design-focused website using HTML, CSS, JavaScript, and animation libraries like GSAP for a highly engaging user experience.'
+    link: 'https://focus-fly.vercel.app/',
+    description: 'Study sessions that feel like traveling.Turn your focus time into real-time flights across the globe.Pick a destination, start your session, and stay focused until you land.If you quit early… your flight fails.You’re not studying — you’re flying.'
   },
   { 
-    title: 'Exo-Ape', 
-    category: 'UI Clone', 
-    year: '2023',
+    title: 'Obys Agency', 
+    image: 'https://picsum.photos/seed/obys/600/800',
+    link: 'https://banditadas.github.io/Obys-Agency/',
+    description: 'A creative agency website featuring advanced animations, smooth scrolling, and interactive elements. The project recreates a modern design-focused website using HTML, CSS, JavaScript, and animation libraries like GSAP for a highly engaging user experience.'
+  },
+  { 
+    title: 'Exo-Ape',
     image: 'https://picsum.photos/seed/exo/600/800',
-    link: '#',
+    link: 'https://exo-ape-j778.vercel.app/',
     description: 'A visually rich website inspired by modern creative agency designs. It showcases bold typography, smooth scrolling interactions, and immersive animations to create a dynamic and engaging frontend experience.'
   },
   { 
     title: 'Work', 
-    category: 'UI Clone', 
-    year: '2023',
     image: 'https://picsum.photos/seed/work/600/800',
-    link: '#',
+    link: 'https://work-ruby-three.vercel.app/',
     description: 'A modern web experience built with smooth animations and interactive UI elements. The project focuses on creating an engaging user interface with fluid transitions, responsive design, and visually appealing layouts to deliver a polished browsing experience.'
   },
   { 
     title: 'Two Good Co', 
-    category: 'UI Clone', 
-    year: '2023',
     image: 'https://picsum.photos/seed/twogood/600/800',
     link: 'https://banditadas.github.io/Two-Good-CO/',
-    description: 'A UI clone of an Australian food and product selling company called TWO GOOD CO.'
+    description: 'A UI of an Australian food and product selling company called TWO GOOD CO.'
   },
-  { 
-    title: 'Flipkart', 
-    category: 'UI Clone', 
-    year: '2023',
-    image: 'https://picsum.photos/seed/flipkart/600/800',
-    link: 'https://banditadas.github.io/Flipkart-clone/',
-    description: 'A UI clone of FLIPKART, a shopping website.'
-  }
 ];
 
 interface Project {
@@ -61,78 +51,8 @@ interface Project {
 }
 
 export const AllProjects: React.FC = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const response = await fetch('https://api.github.com/users/banditadas/repos?sort=created&direction=desc');
-        if (!response.ok) throw new Error('Failed to fetch');
-        const data = await response.json();
-        // console.log("GitHub API Response:", data);
-        
-        const topRepos = data
-          .filter((repo: any) => !repo.fork) // Filter out forks
-          .slice(0, 5); // Limit to recent 5 repos
-
-        const formattedProjects = await Promise.all(
-          topRepos.map(async (repo: any) => {
-            let description = repo.description;
-            
-            try {
-              // Fetch raw README content
-              const readmeResponse = await fetch(`https://raw.githubusercontent.com/banditadas/${repo.name}/${repo.default_branch}/README.md`);
-              if (readmeResponse.ok) {
-                const readmeText = await readmeResponse.text();
-                const lines = readmeText
-                  .split('\n')
-                  .map(line => line.trim())
-                  .filter(line => 
-                    line.length > 0 && 
-                    !line.startsWith('#') && 
-                    !line.startsWith('---') && 
-                    !line.startsWith('![') &&
-                    !line.startsWith('<') // Exclude headings, dividers, images, and HTML tags
-                  )
-                  .slice(0, 3); // Get the first 3 valid text lines
-
-                if (lines.length > 0) {
-                  // Join the lines and strip out basic markdown links and bolding
-                  description = lines.join(' ').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/(\*\*|__)/g, '');
-                }
-              }
-            } catch (error) {
-              console.warn(`Could not fetch README for ${repo.name}`, error);
-            }
-
-            return {
-              title: repo.name.replace(/-/g, ' '),
-              category: repo.language || 'Project',
-              year: new Date(repo.created_at).getFullYear().toString(),
-              image: `https://opengraph.githubassets.com/1/banditadas/${repo.name}`,
-              link: repo.homepage || repo.html_url,
-              description: description || 'A modern web experience built with smooth animations and interactive UI elements. The project focuses on creating an engaging user interface with fluid transitions, responsive design, and visually appealing layouts.'
-            };
-          })
-        );
-          
-        if (formattedProjects.length > 0) {
-          setProjects(formattedProjects);
-        } else {
-          setProjects(fallbackProjects);
-        }
-      } catch (error) {
-        console.error("Error fetching repos:", error);
-        setProjects(fallbackProjects);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRepos();
-  }, []);
-
+  const [projects, setProjects] = useState<Project[]>(fallbackProjects);
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
@@ -162,7 +82,7 @@ export const AllProjects: React.FC = () => {
             {loading ? (
               <div className="flex flex-col items-center justify-center gap-4 py-20">
                 <div className="w-8 h-8 border-4 border-black/20 dark:border-white/20 border-t-black dark:border-t-white rounded-full animate-spin" />
-                <p className="text-sm font-medium opacity-60">Loading GitHub Projects...</p>
+                <p className="text-sm font-medium opacity-60">Loading Projects...</p>
               </div>
             ) : (
               projects.map((project, index) => (
