@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -12,13 +12,28 @@ import { Certificates } from './components/Certificates';
 import { AllProjects } from './components/AllProjects';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsAndConditions } from './components/TermsAndConditions';
+import { NotFound } from './components/NotFound';
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+function ScrollAndHashHandler() {
+  const { pathname, hash } = useLocation();
+  const navigate = useNavigate();
   
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // If on the home page, validate the hash
+    if (pathname === '/') {
+      const validHashes = ['', '#', '#about', '#work', '#certificates', '#contact'];
+      if (hash && !validHashes.includes(hash)) {
+        // Redirect to a non-existent route to trigger the 404 page
+        navigate('/404', { replace: true });
+        return;
+      }
+    }
+
+    // Default scroll to top if there's no hash (normal page navigation)
+    if (!hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash, navigate]);
   
   return null;
 }
@@ -42,7 +57,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Router>
-        <ScrollToTop />
+        <ScrollAndHashHandler />
         <main className="relative min-h-screen font-sans">
           <CustomCursor />
           <Navbar />
@@ -58,6 +73,7 @@ export default function App() {
             <Route path="/projects" element={<AllProjects />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </main>

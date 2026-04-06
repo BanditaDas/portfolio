@@ -43,8 +43,8 @@ const fallbackProjects = [
 
 interface Project {
   title: string;
-  category: string;
-  year: string;
+  category?: string;
+  year?: string;
   image: string;
   link: string;
   description: string;
@@ -65,7 +65,7 @@ export const AllProjects: React.FC = () => {
               Back to Home
             </Link>
             <h1 className="text-5xl md:text-7xl font-medium flex overflow-hidden">
-              {"Archive".split('').map((char, index) => (
+              {"All Projects".split('').map((char, index) => (
                 <motion.span
                   key={index}
                   initial={{ y: '100%' }}
@@ -132,7 +132,7 @@ export const AllProjects: React.FC = () => {
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-black/20 dark:border-white/20 text-base font-medium hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-500 group"
               >
                 <LuGithub className="w-5 h-5" />
-                <span>View GitHub Profile</span>
+                <span>View More on GitHub</span>
                 <LuArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
             </Magnetic>
