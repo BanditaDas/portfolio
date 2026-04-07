@@ -10,7 +10,7 @@ const projects = [
     category: "UI Clone",
     year: "2023",
     video: "./obys.mp4",
-    description: "A creative agency website clone featuring advanced animations, smooth scrolling, and interactive elements. The project recreates a modern design-focused website using HTML, CSS, JavaScript, and animation libraries like GSAP for a highly engaging user experience.",
+    description: "A creative agency website featuring advanced animations, smooth scrolling, and interactive elements. The project recreates a modern design-focused website using HTML, CSS, JavaScript, and animation libraries like GSAP for a highly engaging user experience.",
     link: "https://banditadas.github.io/Obys-Agency/",
   },
   {
