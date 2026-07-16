@@ -38,13 +38,7 @@ const fallbackProjects = [
     link: "https://work-ruby-three.vercel.app/",
     description:
       "A modern web experience built with smooth animations and interactive UI elements. The project focuses on creating an engaging user interface with fluid transitions, responsive design, and visually appealing layouts to deliver a polished browsing experience.",
-  },
-  {
-    title: "Two Good Co",
-    link: "https://banditadas.github.io/Two-Good-CO/",
-    description:
-      "A UI of an Australian food and product selling company called TWO GOOD CO.",
-  },
+  }
 ];
 
 interface Project {
