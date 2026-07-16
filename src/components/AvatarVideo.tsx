@@ -76,7 +76,6 @@ export const AvatarVideo: React.FC = () => {
                 count++;
               }
             }
-
             bgR = sumR / count;
             bgG = sumG / count;
             bgB = sumB / count;
